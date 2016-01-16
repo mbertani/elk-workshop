@@ -1,4 +1,12 @@
 
-# Run the following command
+# The following command runs logstash and verifies the input file
+> ..\..\..\logstash-2.1.1\bin\logstash agent -f verify.conf --configtest
+$ ../../../logstash-2.1.1/bin/logstash agent -f verify.conf --configtest
+
+# Run the command again without the test check 
 > ..\..\..\logstash-2.1.1\bin\logstash agent -f verify.conf
-$ ../../../logstash-2.1.1/bin/logstash -e verify.conf
+$ ../../../logstash-2.1.1/bin/logstash agent -f verify.conf
+
+Write something in you console and finish with CR
+
+Further info: https://www.elastic.co/guide/en/logstash/current/configuration-file-structure.html

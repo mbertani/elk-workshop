@@ -1,0 +1,3 @@
+# Fix 1.conf and run logstash with --configtest parameter. Verify the configuration is OK.
+
+# Run 1.conf job in logsash. Verify that all lines from the csv file appear in your console.

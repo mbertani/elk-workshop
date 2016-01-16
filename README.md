@@ -21,6 +21,7 @@ https://download.elastic.co/logstash/logstash/logstash-2.1.1.zip
 ### Kibana 4.3.1
 
 https://download.elastic.co/kibana/kibana/kibana-4.3.1-windows.zip
-https://download.elastic.co/kibana/kibana/kibana-4.3.1-darwin-x64.tar.gz
 https://download.elastic.co/kibana/kibana/kibana-4.3.1-linux-x64.tar.gz
 https://download.elastic.co/kibana/kibana/kibana-4.3.1-linux-x86.tar.gz
+
+

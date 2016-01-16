@@ -1,0 +1,41 @@
+# The .sincedb file
+Notice the ".sincedb" file in your directory. 
+This file keeps a pointer to the location that logstash has proccessed the file so far. 
+If you don't delete it, logstash will not read the file from start again.
+
+# csv filter pluing
+https://www.elastic.co/guide/en/logstash/current/plugins-filters-csv.html
+
+You will learn to use the csv filter plugin.
+
+1. Parse lapd_small.csv with this plugin. Make sure all fields from the csv file appear as fields in the logstash events in the console
+2. Parse lapd_small.csv again, but this time make sure you:
+	- rename the following fields: 
+		"DATE OCC" => "date_occurrence"
+		"TIME OCC" => "time_occurrence"
+		"AREA" => "area_code"
+		"AREA NAME" => "area_name"
+		"Crm Cd" => "crime_code"
+		"Crm Cd Desc" => "crime_description"
+		"LOCATION" => "address"
+		"Location 1" => "gps"
+	- delete the following fields: 
+	"Date Rptd","DR NO","RD","Status","Status Desc","Cross Street"
+	
+# Logic in the output 
+When using plugins, you will encounter errors when parsing. Logstash adds "tags" to the events, so that you can check if the parsing succeeded.
+You can then redirect this outputs to a file so that you can figure out why they fail and act accordingly.
+
+1. Parse lapd_small.csv again but this time add the following output section:
+output{
+
+	if ("_csvparsefailure" not in [tags]) {
+		stdout { codec => rubydebug}
+	} else {
+		file {
+			path => "<full path to elk-workshop>/logstash/pipelines/lapd/lapd-parse-failure.csv"
+		}
+	  }
+}
+
+2. If the file is not produced, then all events where parsed successfully.
