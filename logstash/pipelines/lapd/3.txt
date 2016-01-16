@@ -1,0 +1,18 @@
+# Clean and format your data
+You will learn to parse dates and to clean your data.
+
+date_occurrence and time_occurrence track our datetime value. 
+We want to have only one field with this information. 
+Furthermore, we want to eliminate extra white spaces from address field.
+
+1. Use the mutate filter to join date_occurence and time_occurrence into a new field "datetime".
+Documentation: https://www.elastic.co/guide/en/logstash/current/plugins-filters-mutate.html
+Look at the add_field setting.
+
+2. Once we can have joined the fields, we do not want to keep them. Remove them.
+Look at remove_field setting.
+
+3. Parse the date using the date filter
+Documentation: https://www.elastic.co/guide/en/logstash/current/plugins-filters-date.html
+
+Here you will find the right timezone, put the data into the @timestamp field and remove datetime field.

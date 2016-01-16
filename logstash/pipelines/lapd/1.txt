@@ -1,3 +1,11 @@
-# Fix 1.conf and run logstash with --configtest parameter. Verify the configuration is OK.
+# File input plugin
+Documentation: https://www.elastic.co/guide/en/logstash/current/plugins-inputs-file.html
+You will learn how to read files from logstash.
 
-# Run 1.conf job in logsash. Verify that all lines from the csv file appear in your console.
+1. Fix 1.conf and run logstash with --configtest parameter. Verify the configuration is OK.
+2. Run 1.conf job in logstash. Verify that all lines from the csv file appear in your console.
+3. Notice the ".sincedb" file in your directory. 
+	This file keeps a pointer to the location that logstash has proccessed the file so far. 
+	If you don't delete it, logstash will not read the file from start but from that pointer.
+
+4. Delete this file every time you want logstash to process the file from start. You will need to do this for the next excercises.
