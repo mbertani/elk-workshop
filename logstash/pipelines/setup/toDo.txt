@@ -1,0 +1,4 @@
+
+# Run the following command
+> ..\..\..\logstash-2.1.1\bin\logstash agent -f verify.conf
+$ ../../../logstash-2.1.1/bin/logstash -e verify.conf

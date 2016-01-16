@@ -1,3 +1,4 @@
+# We ignore local installations of ELK
 logstash-*
 elasticsearch-*
 kibana-*
