@@ -9,10 +9,10 @@ Furthermore, we want to eliminate extra white spaces from address field.
 Documentation: https://www.elastic.co/guide/en/logstash/current/plugins-filters-mutate.html
 Look at the add_field setting.
 
-2. Once we can have joined the fields, we do not want to keep them. Remove them.
+2. Once we have joined the fields, we do not want to keep them. Remove date_occurence and time_occurrence.
 Look at remove_field setting.
 
 3. Parse the date using the date filter
 Documentation: https://www.elastic.co/guide/en/logstash/current/plugins-filters-date.html
 
-Here you will find the right timezone, put the data into the @timestamp field and remove datetime field.
+Here you will find the right timezone, put the data into the @timestamp field and remove the datetime field.

@@ -1,0 +1,126 @@
+# Send to Elasticsearch
+Documentation: https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html
+
+Look at:
+hosts
+index
+document_id
+
+
+
+
+Look in Kibana. You have no geo_point fields. How to fix this?
+
+1. Get your mapping from http://localhost:9200/lapd?pretty
+
+{
+  "lapd" : {
+    "aliases" : { },
+    "mappings" : {
+      "logs" : {
+        "properties" : {
+          "@timestamp" : {
+            "type" : "date",
+            "format" : "strict_date_optional_time||epoch_millis"
+          },
+          "@version" : {
+            "type" : "string"
+          },
+          "address" : {
+            "type" : "string"
+          },
+          "area_code" : {
+            "type" : "string"
+          },
+          "area_name" : {
+            "type" : "string"
+          },
+          "crime_code" : {
+            "type" : "string"
+          },
+          "crime_description" : {
+            "type" : "string"
+          },
+          "gps" : {
+            "type" : "double"
+          },
+          "host" : {
+            "type" : "string"
+          },
+          "message" : {
+            "type" : "string"
+          },
+          "path" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "settings" : {
+      "index" : {
+        "creation_date" : "1453240549960",
+        "number_of_shards" : "5",
+        "number_of_replicas" : "1",
+        "uuid" : "tqlp1zrpRuCW20bU33kZBg",
+        "version" : {
+          "created" : "2010199"
+        }
+      }
+    },
+    "warmers" : { }
+  }
+}
+
+2. Delete your index
+> curl -Method DELETE -Uri http://127.0.0.1:9200/lapd
+
+3. Put a template
+
+curl -Method Put -Uri http://127.0.0.1:9200/_template/lapd_template -Body '
+{
+"template" : "lapd",
+    "mappings" : {
+      "logs" : {
+        "properties" : {
+          "@timestamp" : {
+            "type" : "date",
+            "format" : "strict_date_optional_time||epoch_millis"
+          },
+          "@version" : {
+            "type" : "string"
+          },
+          "address" : {
+            "type" : "string", "fields": {"raw": {"type":  "string","index": "not_analyzed"}}
+          },
+          "area_code" : {
+            "type" : "string", "index": "not_analyzed"
+          },
+          "area_name" : {
+            "type" : "string", "fields": {"raw": {"type":  "string","index": "not_analyzed"}}
+          },
+          "crime_code" : {
+            "type" : "string", "index": "not_analyzed"
+          },
+          "crime_description" : {
+            "type" : "string", "fields": {"raw": {"type":  "string","index": "not_analyzed"}}
+          },
+          "gps" : {
+            "type": "geo_point", "lat_lon" : true, "geohash" : true, "index": "not_analyzed", "fielddata" : {"format" : "compressed","precision" : "1cm"}
+          },
+          "host" : {
+            "type" : "string", "index": "not_analyzed"
+          },
+          "message" : {
+            "type" : "string"
+          },
+          "path" : {
+            "type" : "string", "index": "not_analyzed"
+          }
+	  }
+    }
+  }
+}'
+
+4. Look at your template at http://127.0.0.1:9200/_template/lapd_template?pretty
+
+5. Run Logstash again and check in kibana
