@@ -89,14 +89,61 @@ Even the "gps" field. This is not good since we will not be able to plot our dat
 
 2.b. Delete your index (yes, this will delete all your data!)
 > curl -Method DELETE -Uri http://127.0.0.1:9200/lapd
+$ curl -XDELETE 'http://127.0.0.1:9200/lapd'
 
 2.c. Put a template to format your data in elasticsearch
 "not_analyzed" 	-> we will use these fields to build aggregations
 "analized" 		-> we will use these fields for search
 
-curl -Method DELETE -Uri http://127.0.0.1:9200/_template/lapd_template
+> curl -Method DELETE -Uri http://127.0.0.1:9200/_template/lapd_template
+$ curl -XDELETE 'http://127.0.0.1:9200/_template/lapd_template'
 
-curl -Method Put -Uri http://127.0.0.1:9200/_template/lapd_template -Body '
+> curl -Method Put -Uri http://127.0.0.1:9200/_template/lapd_template -Body '
+{
+"template" : "lapd",
+    "mappings" : {
+      "logs" : {
+        "properties" : {
+          "@timestamp" : {
+            "type" : "date",
+            "format" : "strict_date_optional_time||epoch_millis"
+          },
+          "@version" : {
+            "type" : "string"
+          },
+          "address" : {
+            "type" : "string", "fields": {"raw": {"type":  "string","index": "not_analyzed"}}
+          },
+          "area_code" : {
+            "type" : "string", "index": "not_analyzed"
+          },
+          "area_name" : {
+            "type" : "string", "fields": {"raw": {"type":  "string","index": "not_analyzed"}}
+          },
+          "crime_code" : {
+            "type" : "string", "index": "not_analyzed"
+          },
+          "crime_description" : {
+            "type" : "string", "fields": {"raw": {"type":  "string","index": "not_analyzed"}}
+          },
+          "gps" : {
+            "type": "geo_point", "lat_lon" : true, "geohash" : true, "index": "not_analyzed", "fielddata" : {"format" : "compressed","precision" : "1cm"}
+          },
+          "host" : {
+            "type" : "string", "index": "not_analyzed"
+          },
+          "message" : {
+            "type" : "string"
+          },
+          "path" : {
+            "type" : "string", "index": "not_analyzed"
+          }
+	  }
+    }
+  }
+}'
+
+$ curl –xPUT 'http://127.0.0.1:9200/_template/lapd_template' –d '
 {
 "template" : "lapd",
     "mappings" : {
