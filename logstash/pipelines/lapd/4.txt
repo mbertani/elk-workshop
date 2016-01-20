@@ -1,11 +1,14 @@
 # Send to Elasticsearch
 Documentation: https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html
 
-Look at:
-hosts
-index
-document_id
+In this excercise you will learn how to send events to elasticsearch.
 
+The key words are:  hosts, index and document_id. Check them out in the above documenation link.
+
+When sending events to elasticsearch, if you do not specify document_id, a new one will be generated
+each time you send the data. This will create duplicated data if we run logstash several times when
+clearing the sincedb_path. To prevent this, we can create a new field to produce a unique id for 
+each event. Look at the ruby filter. Do you understand what we are doing?
 
 
 
