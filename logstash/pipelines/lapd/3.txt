@@ -9,7 +9,7 @@ For our purposes, this is not important, and we want to overwrite "@timestamp" w
 Furthermore, we want to eliminate the extra white spaces from address field.
 
 Start with 3.conf and proceed in the following order, by uncommenting the corresponding code.
-If you need help, you can take a peek at 3.fasit or ask the speakers. 
+If you need help, you can take a peek at 3.fasit.conf or ask the speakers. 
 Try to run logstash at each completed step to make sure you are on the right track. 
 Remember to delete the file at sincedb_path between runs, so that logstash process the whole input file again. 
 
