@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Hands-on ELK Workshop</title>
+<meta name="author" content="(Marco Bertani-Økland and Sigmund Hansen)"/>
+<link rel="stylesheet" href="./reveal.js/css/reveal.css"/>
+<link rel="stylesheet" href="./reveal.js/css/theme/night.css" id="theme"/>
+<link rel="stylesheet" href=""/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide">
+<h1>Hands-on ELK Workshop</h1>
+<h2>Marco Bertani-Økland and Sigmund Hansen</h2>
+<h2><a href="mailto:"></a></h2>
+<h2></h2>
+</section>
+
+<section>
+<section id="slide-orgheadline2">
+<h2 id="orgheadline2"><span class="section-number-2">1</span> Setup</h2>
+<ul>
+<li>Extract at the root of the repository:
+<ul>
+<li>Elasticsearch</li>
+<li>Logstash</li>
+<li>Kibana</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-orgheadline1">
+<h3 id="orgheadline1"><span class="section-number-3">1.1</span> Elasticsearch</h3>
+<ul>
+<li>Auto-discovery of nodes in cluster
+<ul>
+<li>You will find the settings in <b>elasticsearch-2.1.1/config/elasticsearch.yml</b></li>
+<li>Change the value of <b>cluster.name</b> to something unique</li>
+<li>Now you can run elasticsearch alongside other workshop participants</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline9">
+<h2 id="orgheadline9"><span class="section-number-2">2</span> Exercises</h2>
+<ul>
+<li>Basic Logstash Setup</li>
+<li>LAPD Crime Reports</li>
+<li>NASA HTTP Access Logs</li>
+
+</ul>
+
+<p>
+All exercises are available in plain text, alongside the referenced
+configuration files.
+</p>
+
+</section>
+<section id="slide-orgheadline5">
+<h3 id="orgheadline5"><span class="section-number-3">2.1</span> Basic Logstash Setup</h3>
+<ul>
+<li>Start a shell/cmd prompt</li>
+<li>Change to the <b>logstash/pipelines/setup</b> directory</li>
+
+</ul>
+
+</section>
+<section id="slide-orgheadline3">
+<h4 id="orgheadline3"><span class="section-number-4">2.1.1</span> Syntax checker</h4>
+<ul>
+<li>Verify the syntactic correctness of the <b>verify.conf</b> configuration</li>
+
+</ul>
+
+<p>
+Linux:
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-bash">../../../logstash-2.1.1/bin/logstash agent -f verify.conf --configtest
+</pre>
+</div>
+
+<p>
+Windows:
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-bash">..\..\..\logstash-2.1.1\bin\logstash agent -f verify.conf --configtest
+</pre>
+</div>
+
+</section>
+<section id="slide-orgheadline4">
+<h4 id="orgheadline4"><span class="section-number-4">2.1.2</span> Test the configuration</h4>
+<ul>
+<li>Run Logstash with the configuration with the command below</li>
+<li>Type one or more lines in the console</li>
+<li>Exit Logstash with <b>Ctrl+C</b></li>
+
+</ul>
+
+<p>
+Linux:
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-bash">../../../logstash-2.1.1/bin/logstash agent -f verify.conf --configtest
+</pre>
+</div>
+
+<p>
+Windows:
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-bash">..\..\..\logstash-2.1.1\bin\logstash agent -f verify.conf --configtest
+</pre>
+</div>
+
+</section>
+<section id="slide-orgheadline7">
+<h3 id="orgheadline7"><span class="section-number-3">2.2</span> LAPD Crime Reports</h3>
+<ul>
+<li>Familiarize yourself with the data <b>logstash/pipelines/lapd/data/lapd<sub>small.csv</sub></b></li>
+<li>We will focus on the following headers:</li>
+
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">DATE OCC</td>
+<td class="org-left">Date of occurrence</td>
+</tr>
+
+<tr>
+<td class="org-left">TIME OCC</td>
+<td class="org-left">Time of occurrence</td>
+</tr>
+
+<tr>
+<td class="org-left">Crm Cd</td>
+<td class="org-left">Crime Code</td>
+</tr>
+
+<tr>
+<td class="org-left">Crm Cd Desc</td>
+<td class="org-left">Crime Code Description</td>
+</tr>
+
+<tr>
+<td class="org-left">Status</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Statue Desc</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">LOCATION</td>
+<td class="org-left">Street address</td>
+</tr>
+
+<tr>
+<td class="org-left">location 1</td>
+<td class="org-left">GPS coordinates</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+<section id="slide-orgheadline6">
+<h4 id="orgheadline6"><span class="section-number-4">2.2.1</span> File Input Plugin</h4>
+
+
+
+</section>
+<section id="slide-orgheadline8">
+<h3 id="orgheadline8"><span class="section-number-3">2.3</span> Nasa HTTP Access Logs</h3>
+<p>
+Apache Logs for Nasa's website in 
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline11">
+<h2 id="orgheadline11"><span class="section-number-2">3</span> Wrap-up</h2>
+<div class="outline-text-2" id="text-3">
+</div></section>
+<section id="slide-orgheadline10">
+<h3 id="orgheadline10"><span class="section-number-3">3.1</span> Unit/Integration Tests</h3>
+<ul>
+<li>Testing Logstash configurations can be difficult</li>
+<li>It is possible to write unit tests in Ruby:</li>
+<li><a href="http://stackoverflow.com/questions/18823917/how-to-implement-the-unit-or-integration-tests-for-logstash-configuration">http://stackoverflow.com/questions/18823917/how-to-implement-the-unit-or-integration-tests-for-logstash-configuration</a></li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="./reveal.js/lib/js/head.min.js"></script>
+<script src="./reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: true,
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: './reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: './reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: './reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
