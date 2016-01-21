@@ -1,0 +1,95 @@
+#+OPTIONS: toc:nil email:nil
+#+TITLE: Hands-on ELK Workshop
+#+AUTHOR: Marco Bertani-Økland and Sigmund Hansen
+#+EMAIL: 
+#+REVEAL_THEME: night
+
+* Setup
+
+- Extract at the root of the repository:
+  - Elasticsearch
+  - Logstash
+  - Kibana
+
+** Elasticsearch
+
+- Auto-discovery of nodes in cluster
+  - You will find the settings in *elasticsearch-2.1.1/config/elasticsearch.yml*
+  - Change the value of *cluster.name* to something unique
+  - Now you can run elasticsearch alongside other workshop participants
+
+* Exercises
+
+- Basic Logstash Setup
+- LAPD Crime Reports
+- NASA HTTP Access Logs
+
+All exercises are available in plain text, alongside the referenced
+configuration files.
+
+** Basic Logstash Setup
+
+- Start a shell/cmd prompt
+- Change to the *logstash/pipelines/setup* directory
+
+*** Syntax checker
+
+- Verify the syntactic correctness of the *verify.conf* configuration
+
+Linux:
+#+BEGIN_SRC bash
+../../../logstash-2.1.1/bin/logstash agent -f verify.conf --configtest
+#+END_SRC
+
+Windows:
+#+BEGIN_SRC bash
+..\..\..\logstash-2.1.1\bin\logstash agent -f verify.conf --configtest
+#+END_SRC
+
+*** Test the configuration
+
+- Run Logstash with the configuration with the command below
+- Type one or more lines in the console
+- Exit Logstash with *Ctrl+C*
+
+Linux:
+#+BEGIN_SRC bash
+../../../logstash-2.1.1/bin/logstash agent -f verify.conf --configtest
+#+END_SRC
+
+Windows:
+#+BEGIN_SRC bash
+..\..\..\logstash-2.1.1\bin\logstash agent -f verify.conf --configtest
+#+END_SRC
+
+** LAPD Crime Reports
+
+- Familiarize yourself with the data *logstash/pipelines/lapd/data/lapd_small.csv*
+- We will focus on the following headers:
+
+|-------------+------------------------|
+| DATE OCC    | Date of occurrence     |
+| TIME OCC    | Time of occurrence     |
+| Crm Cd      | Crime Code             |
+| Crm Cd Desc | Crime Code Description |
+| Status      |                        |
+| Statue Desc |                        |
+| LOCATION    | Street address         |
+| location 1  | GPS coordinates        |
+|-------------+------------------------|
+
+*** File Input Plugin
+
+
+
+** Nasa HTTP Access Logs
+
+Apache Logs for Nasa's website in 
+
+* Wrap-up
+
+** Unit/Integration Tests
+
+- Testing Logstash configurations can be difficult
+- It is possible to write unit tests in Ruby:
+- http://stackoverflow.com/questions/18823917/how-to-implement-the-unit-or-integration-tests-for-logstash-configuration
