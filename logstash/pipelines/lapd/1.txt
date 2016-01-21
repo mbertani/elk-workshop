@@ -11,11 +11,11 @@ We assume you hava a shell in the same directory as this file.
 
 1. Fix 1.conf and run logstash with --configtest parameter. Verify the configuration is OK.
 > ..\..\..\logstash-2.1.1\bin\logstash agent -f 1.conf --configtest
-$ ../../../logstash-2.1.1\bin\logstash agent -f 1.conf --configtest
+$ ../../../logstash-2.1.1/bin/logstash agent -f 1.conf --configtest
 
 2. Run 1.conf job in logstash. Verify that all lines from the csv file appear in your console.
 > ..\..\..\logstash-2.1.1\bin\logstash agent -f 1.conf
-$ ../../../logstash-2.1.1\bin\logstash agent -f 1.conf 
+$ ../../../logstash-2.1.1/bin/logstash agent -f 1.conf 
 
 3. Notice the sincedb_path file in your directory. 
 	This file keeps a pointer to the location that logstash has proccessed the file so far. 
