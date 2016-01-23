@@ -1,4 +1,4 @@
-#+OPTIONS: toc:nil email:nil
+#+OPTIONS: toc:nil email:nil H:4
 #+TITLE: Hands-on ELK Workshop
 #+AUTHOR: Marco Bertani-Økland and Sigmund Hansen
 #+EMAIL: 
@@ -97,6 +97,7 @@ Logs, exercises and configuration files can be found in *logstash/pipelines/http
 
 - Regular expression text parser
 - Pre-defined patterns
+  - See: https://github.com/logstash-plugins/logstash-patterns-core/
 - Named matches become fields
 
 *** Getting started
@@ -120,16 +121,37 @@ Linux:
 + Take note of the pattern used: *"%{DATA:test} "*
 + *DATA* is a pre-defined pattern equivalent to ".*?"
 + *:test* tells grok to bind the match to the field *test*
-+ "%{DATA:test} " is equivalent to "(?<test>.*?) " 
++ "%{DATA:test} " is equivalent to "(?<test>.*?) "
 
 *** Grok constructor
 
 - Regular expressions can be a hassle
-- Lots of pre-defined patterns (120 according to docs)
+- Lots of pre-defined patterns (around 120)
 - http://grokconstructor.appspot.com/ \\
   to the rescue
 
-****
+**** Incremental Construction
+
+- Select incremental construction
+- Copy a few lines from access.mini.log into the text area and press Go
+- Notice that the first pattern in the list matches everything: \\
+  *COMBINEDAPACHELOG*
+  - In the final results, we will use this pattern. \\
+    For now, spend a few minutes getting familiar with the constructor.
+
+**** Incremental Construction cont.
+
+- The Apache log format documentation: \\
+  https://httpd.apache.org/docs/1.3/logs.html#common
+- Try to build a pattern that will capture the following fields:
+  - Client IP/host name
+  - Date and time
+  - HTTP method
+  - Path part of requested URL
+  - HTTP status code
+- Feel free to handle more parts
+- Remember to add field names to the pattern
+- Test your patterns
 
 ** Geo IP
 
@@ -138,25 +160,40 @@ Linux:
 - Updated databases can be downloaded from \\
   http://dev.maxmind.com/geoip/legacy/geolite/
 
-*** 
+*** Basic Geo IP Configuration
 
-- 
+- Use *2.conf*, or add a geoip filter after your grok filter
+- First set the source field to the client IP/host name field: \\
+  *clientip* in the pre-defined pattern
+- Try running logstash with the configuration
+
+*** Fields
+
+- The geoip has added a lot of fields
+- The most important one is *[geoip][location]* (coordinates)
+- All these fields take up additional storage space
+- Add a field option to the geoip filter and input an array of fields you want to keep
+- Re-run logstash with the updated configuration
 
 ** Timestamp
 
 - Use the date and time specified in the logs
-- Access logs do not use ISO-8601 formats
+- Access logs do not use an ISO-8601 format
 - Format specification can be found at: \\
   http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html
+- Add a date filter similar to the one used in the LAPD exercise
+- You don't need to specify the time zone, \\
+  because the Apache date format contains it
 
 ** Output to Elasticsearch
 
-This is pretty similar to the last step of the LAPD exercise. But we
-will not be changing the mappings this time around.
+- Add output to Elasticsearch
+- Set the name of the index
 
-*** Index Name
+*** Import Full Access Log
 
-
+- Unzip the *data/access.zip* archive
+- Run logstash with the final configuration
 
 * Wrap-up
 
@@ -165,3 +202,14 @@ will not be changing the mappings this time around.
 - Testing Logstash configurations can be difficult
 - It is possible to write unit tests in Ruby:
 - http://stackoverflow.com/questions/18823917/how-to-implement-the-unit-or-integration-tests-for-logstash-configuration
+** Time-based Indices
+
+- You can add date fields to the index name
+  - Slight increase in storage requirements
+  - Allows deleting data
+  - Increased performance
+- You may want indices to be:
+  - Daily: "-%{+YYYY.MM.dd}"
+  - Weekly "-%{+xxxx.ww}"
+  - Monthly "-%{+YYYY.MM}"
+- Defaults to daily: "logstash-%{+YYYY.MM.dd}"
