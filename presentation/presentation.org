@@ -1,40 +1,73 @@
-#+OPTIONS: toc:nil email:nil
+#+OPTIONS: toc:nil email:nil num:nil
 #+TITLE: Hands-on ELK Workshop
 #+AUTHOR: Marco Bertani-Økland and Sigmund Hansen
-#+EMAIL: 
+#+EMAIL: mab@computas.com sha@computas.com
 #+REVEAL_THEME: night
 
-* Setup
+* Agenda for today
+|---------------|--------------------------------------|
+| *17:00-17:30* | Intro + food (we speak, you eat )    |
+| *17:30-18:00* | Configuration (Install ELK + repo)   |
+| *18:00-18:40* | 1st pipeline logstash + Elasticsearch|
+| *18:40-18:50* | pause                                |
+| *18:50-19:20* | 1st pipeline visualization in Kibana |
+| *19:20-19:30* | Pause                                |  
+| *19:30-20:10* | 2nd pipeline logstash + Elasticsearch|
+| *20:10-20:20* | Pause                                |
+| *20:20-21:00* | 2nd pipeline visualization in Kibana |
+|-------------+--------------------------------------|
 
+
+* What is the *ELK* platform?
+#+ATTR_REVEAL: :frag (appear)
+
+ELK consist of three open source projects — Elasticsearch, Logstash, and Kibana 
+— designed to take data from any source and search, analyze, and visualize it in real time. 
+The philosophy behind these tools is that getting immediate, actionable insight from data matters.
+
+- *Elasticsearch* for deep search and data analytics. 
+- *Logstash* for centralized logging management: shipping and forwarding logs, log enrichment, and parsing.
+- *Kibana* for powerful and beautiful data visualizations. 
+
+**  What can we use ELK for?
+ 
+- Issue debugging
+- Performance analysis
+- Security analysis
+- Predictive analysis
+- Internet of things (IoT) and logging
+
+** Typical problems with your logs
+
+- Non-consistent log format
+- Decentralized logs
+- Expert knowledge requirement
+
+
+* Setup
+- Clone https://github.com/mbertani/elk-workshop
 - Extract at the root of the repository:
   - Elasticsearch
   - Logstash
   - Kibana
+- Edit elasticsearch-2.1.1/config/elasticsearch.yml
+  - cluster.name: ${HOSTNAME}
 
-** Elasticsearch
+** Shell
 
-- Auto-discovery of nodes in cluster
-  - You will find the settings in *elasticsearch-2.1.1/config/elasticsearch.yml*
-  - Change the value of *cluster.name* to something unique
-  - Now you can run elasticsearch alongside other workshop participants
+- Start a shell in <elk-workshop>/elasticsearch-2.1.1/bin
+  - Run elasticsearch
+  - Open your browser at http://127.0.0.1:9200
+- Start a shell in <elk-workshop>/kibana-4.3.1-xxx/bin
+  - Run kibana
+  - Open your browser at http://127.0.0.1:5601
+- Start a shell in <elk-workshop>/logstash/pipelines/setup
+  - This will be used for logstash 
 
-* Exercises
 
-- Basic Logstash Setup
-- LAPD Crime Reports
-- NASA HTTP Access Logs
+** Verify Logstash
 
-All exercises are available in plain text, alongside the referenced
-configuration files.
-
-** Basic Logstash Setup
-
-- Start a shell/cmd prompt
-- Change to the *logstash/pipelines/setup* directory
-
-*** Syntax checker
-
-- Verify the syntactic correctness of the *verify.conf* configuration
+- Follow instructions at setup.txt
 
 Linux:
 #+BEGIN_SRC bash
@@ -46,25 +79,18 @@ Windows:
 ..\..\..\logstash-2.1.1\bin\logstash agent -f verify.conf --configtest
 #+END_SRC
 
-*** Test the configuration
+* Pipelines
 
-- Run Logstash with the configuration with the command below
-- Type one or more lines in the console
-- Exit Logstash with *Ctrl+C*
+- LAPD Crime Reports with Marco
+- HTTP Access Logs with Sigmund
 
-Linux:
-#+BEGIN_SRC bash
-../../../logstash-2.1.1/bin/logstash agent -f verify.conf --configtest
-#+END_SRC
+All exercises are available in plain text, alongside the referenced configuration files.
 
-Windows:
-#+BEGIN_SRC bash
-..\..\..\logstash-2.1.1\bin\logstash agent -f verify.conf --configtest
-#+END_SRC
 
-** LAPD Crime Reports
+* LAPD Crime Reports
 
-- Familiarize yourself with the data *logstash/pipelines/lapd/data/lapd_small.csv*
+- Navigate to *./logstash/pipelines/lapd*
+- Familiarize yourself with the data *./logstash/pipelines/lapd/data/lapd_small.csv*
 - We will focus on the following headers:
 
 |-------------+------------------------|
@@ -77,16 +103,76 @@ Windows:
 | LOCATION    | Street address         |
 | location 1  | GPS coordinates        |
 |-------------+------------------------|
+** 1st step: Read the data
 
-*** File Input Plugin
+| *What:* | Learn how to use the file input plugin |
+| *How:*  | Open 1.txt and roll up your sleeves |
+| *When:* | Now. You have 3 minutes! |
+
+*Ærg help!* https://www.elastic.co/guide/en/logstash/current/plugins-inputs-file.html
+
+** 2nd step: Give structure to the data
+
+| *What:* | Familiarize yourself with the csv filter plugin |
+| *How:*  | Open 2.txt and read.|
+| *When:* | Now. You have 5 minutes! |
+
+*Ærg help!* 
+
+https://www.elastic.co/guide/en/logstash/current/plugins-filters-csv.html
+
+** 3rd step: Clean and format the data
+
+| *What:*  | Familiarize yourself with mutate and date filter plugins |
+| *How:* | Open 3.txt |
+| *When:* | Now. You have 5 minutes! |
+
+*Ærg help!*  
+
+https://www.elastic.co/guide/en/logstash/current/plugins-filters-mutate.html
+
+https://www.elastic.co/guide/en/logstash/current/plugins-filters-date.html 
+
+** 4th step: Export data to elasticsearch
+| *What:*  | Familiarize yourself with elasticsearch output plugin    |
+| *How:* | Open 4.txt |
+| *When:* | Now. You have 5 minutes! |
+
+*Ærg help!*  
+
+https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html
+
+** Kibana visualization
+#+ATTR_REVEAL: :frag (appear)
+
+- Settings tab
+  - Get lapd index
+- Discover tab
+  - Play with the time filter
+  - See the structure of the data
+- Visualize tab
+  - Generate Pie charts
+  - Histogram bars
+  - Line charts for trends
+  - Metrics
+  - Filter aggregations
+- Dashboard tab
+  - Construct a dashboard
+  - How to import / export the dashboard
 
 
-
-** Nasa HTTP Access Logs
+* HTTP Access Logs
 
 Apache Logs for Nasa's website in 
 
 * Wrap-up
+
+** Useful links
+
+- Follow the blog https://www.elastic.co/blog
+- Some books
+ - https://www.packtpub.com/big-data-and-business-intelligence/elasticsearch-cookbook
+ - https://www.packtpub.com/big-data-and-business-intelligence/learning-elk-stack 
 
 ** Unit/Integration Tests
 
