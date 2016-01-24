@@ -177,8 +177,7 @@ Linux:
 
 ** Timestamp
 
-- Use the date and time specified in the logs
-- Access logs do not use an ISO-8601 format
+- Use *3.conf*, for this and the next exercise
 - Format specification can be found at: \\
   http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html
 - Add a date filter similar to the one used in the LAPD exercise
