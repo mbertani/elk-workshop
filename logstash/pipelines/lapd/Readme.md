@@ -3,6 +3,7 @@
 In this pipeline we analize the criminal records for 2004 for LAPD. 
 Source: https://data.lacity.org/A-Safe-City/LAPD-Crime-and-Collision-Raw-Data-2014/eta5-h8qx (but it seems they have removed the data)
 
+We also include the 2015 records if you want to play further.
 2015 records from: https://data.lacity.org/A-Safe-City/LAPD-Crime-and-Collision-Raw-Data-for-2015/ttiz-7an8
 
 You will be guided through 4 excercises, in order to process the data from the file to elasticsearch.
