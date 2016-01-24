@@ -31,3 +31,6 @@ https://download.elastic.co/kibana/kibana/kibana-4.3.1-linux-x86.tar.gz
 
 In this pipeline we analize the criminal records for LAPD. To get started, navigate to logtash/pipelines/lapd and follow the instructions at the Readme.md file.
 
+## HTTPD
+
+In this pipeline we analyze HTTP access logs, conforming to the Apache Combined Log Format. This format is commonly used by most HTTP servers. To get started, navigate to logstash/pipelines/httpd and follow the instructions in the Readme.md file.
