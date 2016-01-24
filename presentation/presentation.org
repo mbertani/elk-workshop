@@ -19,12 +19,12 @@
 
 
 * What is the *ELK* platform?
-#+ATTR_REVEAL: :frag (appear)
+
 
 ELK consist of three open source projects — Elasticsearch, Logstash, and Kibana 
 — designed to take data from any source and search, analyze, and visualize it in real time. 
 The philosophy behind these tools is that getting immediate, actionable insight from data matters.
-
+#+ATTR_REVEAL: :frag (appear)
 - *Elasticsearch* for deep search and data analytics. 
 - *Logstash* for centralized logging management: shipping and forwarding logs, log enrichment, and parsing.
 - *Kibana* for powerful and beautiful data visualizations. 
@@ -140,8 +140,8 @@ https://www.elastic.co/guide/en/logstash/current/plugins-filters-date.html
 https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html
 
 ** Kibana visualization
-#+ATTR_REVEAL: :frag (appear)
 
+#+ATTR_REVEAL: :frag (appear)
 - Settings tab
   - Get lapd index
 - Discover tab
