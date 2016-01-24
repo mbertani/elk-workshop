@@ -3,9 +3,9 @@ logstash-*
 elasticsearch-*
 kibana-*
 
-# Ignore reveal.js
-reveal.js
-
 # Ignore Emacs temporary files
 *~
 \#*\#
+
+# Ignore Logstash sincedb files
+*sincedb*
