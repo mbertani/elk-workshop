@@ -1,4 +1,4 @@
-#+OPTIONS: toc:nil email:nil H:4
+#+OPTIONS: toc:nil email:nil H:4 ^:nil
 #+TITLE: Hands-on ELK Workshop
 #+AUTHOR: Marco Bertani-Økland and Sigmund Hansen
 #+EMAIL: 
@@ -118,7 +118,7 @@ Linux:
 
 **** Match Option
 
-+ Take note of the pattern used: *"%{DATA:test} "*
++ Take note of the pattern used: "%{DATA:test} "
 + *DATA* is a pre-defined pattern equivalent to ".*?"
 + *:test* tells grok to bind the match to the field *test*
 + "%{DATA:test} " is equivalent to "(?<test>.*?) "
@@ -126,7 +126,8 @@ Linux:
 *** Grok constructor
 
 - Regular expressions can be a hassle
-- Lots of pre-defined patterns (around 120)
+- Lots of pre-defined patterns (around 120): \\
+  https://github.com/logstash-plugins/logstash-patterns-core/
 - http://grokconstructor.appspot.com/ \\
   to the rescue
 
@@ -163,8 +164,9 @@ Linux:
 *** Basic Geo IP Configuration
 
 - Use *2.conf*, or add a geoip filter after your grok filter
-- First set the source field to the client IP/host name field: \\
-  *clientip* in the pre-defined pattern
+- First set the source field to the client IP/host name field
+- You can find the field by examining the COMMONAPACHELOG pattern \\
+  or by running the configuration before adding the geoip filter
 - Try running logstash with the configuration
 
 *** Fields
@@ -172,7 +174,7 @@ Linux:
 - The geoip has added a lot of fields
 - The most important one is *[geoip][location]* (coordinates)
 - All these fields take up additional storage space
-- Add a field option to the geoip filter and input an array of fields you want to keep
+- Add a *fields* option to the geoip filter and specify a string array of fields you want to keep
 - Re-run logstash with the updated configuration
 
 ** Timestamp
@@ -183,6 +185,16 @@ Linux:
 - Add a date filter similar to the one used in the LAPD exercise
 - You don't need to specify the time zone, \\
   because the Apache date format contains it
+
+** Checksum
+
+- Add a checksum with the checksum filter: \\
+  https://www.elastic.co/guide/en/logstash/current/plugins-filters-checksum.html
+- Set the algorithm to sha256 (default) or md5
+- Set the keys to use the *message* field only
+- You cannot specify the output field, so we move it with a mutate
+  - Add a *[@metadata][computed_id]* field with the value of the *logstash_checksum* field
+  - Remove the *logstash_checksum* field
 
 ** Output to Elasticsearch
 
@@ -205,8 +217,8 @@ Linux:
 
 - You can add date fields to the index name
   - Slight increase in storage requirements
-  - Allows deleting data
-  - Increased performance
+  - Allows deleting partial data, which saves storage
+  - Increased performance?
 - You may want indices to be:
   - Daily: "-%{+YYYY.MM.dd}"
   - Weekly "-%{+xxxx.ww}"
