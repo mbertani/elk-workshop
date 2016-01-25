@@ -16,3 +16,18 @@ $ ../../../logstash.2.1.1/bin/logstash agent -f 1.conf
 Notice the value of the field *test* in the outputs.
 
 2. If you look at the *match* option of the grok filter, this may not look like any regular expression you've seen before. DATA is a pre-defined pattern for grok regular expressions equivalent to ".*?" (without the quotes). The :test within the pattern tells grok what field to bind the match to. As a whole, it is equivalent to the regular expression "(?<test>.*?) ".
+
+3. Browse to http://grokconstructor.appspot.com/do/construction
+
+Copy and paste a few lines of logs from the data/access.mini.log file and press Go. You will notice that the first pattern in the list matches everything: COMBINEDAPACHELOG. We will use this for the later exercises, but for now, you should spend a few minutes familiarizing yourself with the constructor.
+
+You will find the Apache log format documented at:  https://httpd.apache.org/docs/1.3/logs.html#common
+
+Build a pattern that will match and capture the following fields:
+- Client IP/host name
+- Date and time
+- HTTP method
+- Path part of requested URL
+- HTTP status code
+
+Try running logstash again with the updated configuration, and test it along the way if you'd like. Remember to delete the sincedb file before each run.

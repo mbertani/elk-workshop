@@ -1,0 +1,25 @@
+# Elasticsearch and timestamps
+
+Now we'll get our HTTP access logs into Elasticsearch, but first we need to fix the timestamps of the log events.
+
+The COMMONAPACHELOG pattern has created a timestamp field, but the @timestamp field is a special value tagging a document with a date and time.
+
+1. Add a date filter, similar to the one used with the LAPD data set. Look at the format of the dates in the logs or use the Apache documentation to figure out the format used: https://httpd.apache.org/docs/1.3/logs.html#common The date filter uses Joda time to parse dates, for how to specify formats see: http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html
+
+Take note of the number of formatting characters used in Joda time. This is covered right below the table of formatting characters.
+
+Run logstash with this configuration and take note of the @timestamp field. Notice that the format is now ISO-8601 formatted.
+
+2. Add a checksum to each event in the log. We will be using the checksum filter for this. Set the algorithm to sha256 or md5. The default is sha256. Set it to base the checksum on the message field, which is the entire log line, with the keys option. The keys option takes an array of fields to build the checksum from.
+
+The checksum filter does not allow you to specify the output field. Let's move it to a metadata field, so it is not stored twice in Elasticsearch. Add a mutate filter with and add_field option, adding [@metadata][computed_id] and set its value to the value of the logstash_checksum field. Remove the old field with the remove_field option, which takes an array of fields to remove.
+
+3. Add output to elasticsearch. You may want to remove the stdout output.
+
+Specify an index name. You can also try to use a time-based index, which can be specified by adding a "-%{+DATEFORMAT}" exchanging DATEFORMAT for an actual date format. The dash is not mandatory, but a dash followed by a date is commonly used. The logstash default index is: "logstash-%{+YYYY.MM.dd}"
+
+Specify the host. Elasticsearch should be running on localhost on port 9200. So add a list of hosts, which should only consist of "localhost:9200".
+
+Specify the document_id to be the content of the checksum from the previous point [@metadata][computed_id].
+
+4. Unzip the full logs and update the path name in the configuration to point to the unzipped logs. This will give you a much larger data set. Run logstash with the new configuration. It will take a few minutes to import into Elasticsearch. In the meantime, we can start working on our visualizations in Kibana.
