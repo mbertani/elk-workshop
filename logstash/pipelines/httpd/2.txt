@@ -1,0 +1,11 @@
+# Geo-IP
+
+We can add GPS coordinates to a document from IP or host name addresses with the geoip filter. A database mapping IP addresses to cities is included with logstash. If you need updated databases, they can be downloaded from: http://dev.maxmind.com/geoip/legacy/geolite/
+
+1. Add a geoip filter and set its source to the field containing the IP address or host name of the client. Examine the COMMONAPACHELOG pattern at https://github.com/logstash-plugins/logstash-patterns-core/blob/master/patterns/grok-patterns or run the configuration before adding the geoip filter to find the name.
+
+After adding the geoip filter, run the configuration and take note of the new fields.
+
+2. There are very many fields included in the geolocation data. But the geoip filter allows you to specify the fields you want to include as an array of strings with the fields option. The most important field is the geo-point (GPS coordinates) named "location". Choose a few fields, for instance city and country, or others. Remember to include the "location" field, as we will use it for maps in Kibana.
+
+Re-run logstash and notice the reduced amount of data. This can help keep your disk usage down.
