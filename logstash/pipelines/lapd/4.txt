@@ -191,7 +191,12 @@ $ curl -XPUT 'http://127.0.0.1:9200/_template/lapd_template' -d '{
 
 2.e. Run Logstash again and check in kibana. 
 
-3. Process the whole dataset
+3. Process the whole dataset, but add a new parameter to the command: "-w 5". This tells logstash to start 5 workers
+who will help in processing the data. Try with a higher number if your machine allows you to.
+
+> ..\..\..\logstash-2.1.1\bin\logstash agent -f 4.conf -w 5
+$ ../../../logstash-2.1.1/bin/logstash agent -f 4.conf -w 5 
+
 Now you are ready to process the whole dataset into elasticsearch, so that we can start visualizing data in kibana.
 
 In the file input plugin, change the path setting to point to lapd_crime_and_collision_2014.csv. 
