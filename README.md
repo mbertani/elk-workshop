@@ -49,6 +49,10 @@ This repo contains all the resources needed for the workshop.
 
 # Logstash pipelines
 
+## Setup
+
+We make sure your system is up and running. Follow [Setup.md](../logstash/pipelines/setup/Setup.md)
+
 ## LAPD 
 
 In this pipeline we analize the criminal records for LAPD. To get started, navigate to logtash/pipelines/lapd and follow the instructions at the Readme.md file.
