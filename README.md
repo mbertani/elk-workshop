@@ -22,7 +22,7 @@ This repo contains all the resources needed for the workshop.
 
 ```git checkout booster2016 ```
 
-- Run ```setup.ps1``` (windows) / ```setup.sh``` (linux) for atomatic setup. Otherwise follow the manual setup below.
+- Run ```setup.ps1``` (windows powershell > 3.0) / ```setup.sh``` (linux) for atomatic setup. Otherwise follow the manual setup below.
 
 
 ## Links for manual setup
@@ -38,7 +38,6 @@ This repo contains all the resources needed for the workshop.
 ### Logstash 2.2.2
 
 - Linux: [logstash-2.2.2.tar.gz](https://download.elastic.co/logstash/logstash/logstash-2.2.2.tar.gz)
-
 - Windows: [logstash-2.2.2.zip](https://download.elastic.co/logstash/logstash/logstash-2.2.2.zip)
 
 ### Kibana 4.4.1
