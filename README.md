@@ -51,7 +51,8 @@ This repo contains all the resources needed for the workshop.
 
 ## Setup
 
-We make sure your system is up and running. Follow [Setup.md](../logstash/pipelines/setup/Setup.md)
+We make sure your system is up and running. Follow [Setup.md](../booster2016/logstash/pipelines/setup/Setup.md)
+
 
 ## LAPD 
 
