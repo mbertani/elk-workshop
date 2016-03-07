@@ -72,6 +72,7 @@ decompress $kibanaFile $kVersion
 
 # Kibana plugins
 ./$kVersion/bin/kibana plugin -i kibana/timelion
+./$kVersion/bin/kibana plugin -i elastic/sense
 # https://github.com/sirensolutions/kibi_radar_vis
 ./$kVersion/bin/kibana plugin -i kibi_radar_vis -u  https://github.com/sirensolutions/kibi_radar_vis/archive/0.1.0.zip
 # https://github.com/sirensolutions/kibi_wordcloud_vis
