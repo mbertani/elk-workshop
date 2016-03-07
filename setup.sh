@@ -1,3 +1,15 @@
+function echo-green() {
+green=`tput setaf 2`
+reset=`tput sgr0`
+echo "${green}$1${reset}"
+}
+
+function echo-red() {
+red=`tput setaf 1`
+reset=`tput sgr0`
+echo "${red}$1${reset}"
+}
+
 function download () {
 # call: download $url $filename
 url=$1
@@ -5,8 +17,9 @@ filename=$2
 
 if [ -e "$filename" ] 
 then
-    echo "$filename exists and will not be downloaded again"
+    echo-red "./$filename exists and will not be downloaded again"
 else
+    echo-green "Downloading from $url into ./$filename"
     wget $url -O $filename
 fi
 }
@@ -18,12 +31,13 @@ file_name=$1
 directory=$2
 if [ -d "$directory" ] 
 then
-    echo "$directory exists and $file_name will not be decompressed again"
+    echo-red "Directory ./$directory exists and $file_name will not be decompressed again"
 else
+    echo-green "Decompressing ./$file_name"
     tar -xf $file_name
 fi
-
 }
+
 
 esVersion="elasticsearch-2.2.0"
 elasticsearchURL="https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.2.0/elasticsearch-2.2.0.tar.gz"
@@ -32,6 +46,7 @@ esFilename=$esVersion.tar.gz
 download $elasticsearchURL $esFilename
 decompress $esFilename $esVersion
 
+echo-green "Installing elasticsearch plugins"
 # ES Plugins
 ./$esVersion/bin/plugin install lmenezes/elasticsearch-kopf/master
 # https://github.com/sirensolutions/siren-join
@@ -44,6 +59,7 @@ logstashFile=$lsVersion.tar.gz
 download $logstashURL $logstashFile
 decompress $logstashFile $lsVersion
 
+echo-green "Installing logstash plugins"
 # Logstash plugins
 ./$lsVersion/bin/plugin install logstash-input-jdbc
 ./$lsVersion/bin/plugin install logstash-input-beats
@@ -70,6 +86,7 @@ kibanaFile=$kVersion.tar.gz
 download $kibanaURL $kibanaFile
 decompress $kibanaFile $kVersion
 
+echo-green "Installing kibana plugins"
 # Kibana plugins
 ./$kVersion/bin/kibana plugin -i kibana/timelion
 ./$kVersion/bin/kibana plugin -i elastic/sense
