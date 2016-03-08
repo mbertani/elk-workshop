@@ -67,4 +67,11 @@ pop-Location
 push-Location
 cd "$kVersion\bin"
 .\kibana plugin -i kibana/timelion
+.\kibana plugin -i elastic/sense
+# https://github.com/sirensolutions/kibi_radar_vis
+.\kibana plugin -i kibi_radar_vis -u  https://github.com/sirensolutions/kibi_radar_vis/archive/0.1.0.zip
+# https://github.com/sirensolutions/kibi_wordcloud_vis
+.\kibana plugin -i kibi_wordcloud_vis -u https://github.com/sirensolutions/kibi_wordcloud_vis/raw/0.1.0/target/kibi_wordcloud_vis-0.1.0.zip
+# https://github.com/sirensolutions/kibi_timeline_vis
+.\kibana plugin -i kibi_timeline_vis -u https://github.com/sirensolutions/kibi_timeline_vis/raw/0.1.1/target/kibi_timeline_vis-0.1.1.zip
 pop-Location
