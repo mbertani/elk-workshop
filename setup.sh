@@ -52,8 +52,8 @@ echo-green "Installing elasticsearch plugins"
 # https://github.com/sirensolutions/siren-join
 ./$esVersion/bin/plugin install solutions.siren/siren-join/2.2.0
 
-lsVersion="logstash-2.2.2"
-logstashURL="https://download.elastic.co/logstash/logstash/logstash-2.2.2.tar.gz"
+lsVersion="logstash-2.1.1"
+logstashURL="https://download.elastic.co/logstash/logstash/logstash-2.1.1.tar.gz"
 logstashFile=$lsVersion.tar.gz
 
 download $logstashURL $logstashFile

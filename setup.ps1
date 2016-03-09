@@ -32,8 +32,8 @@ $elasticsearchURL = "https://download.elasticsearch.org/elasticsearch/release/or
 $elasticsearchFile = "$PSScriptRoot\$esVersion.zip"
 download -url $elasticsearchURL -file $elasticsearchFile
 
-$lsVersion = "logstash-2.2.2"
-$logstashURL = "https://download.elastic.co/logstash/logstash/logstash-2.2.2.zip"
+$lsVersion = "logstash-2.1.1"
+$logstashURL = "https://download.elastic.co/logstash/logstash/logstash-2.1.1.zip"
 $logstashFile = "$PSScriptRoot\$lsVersion.zip"
 download -url $logstashURL -file $logstashFile
 
