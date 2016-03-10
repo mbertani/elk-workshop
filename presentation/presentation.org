@@ -132,7 +132,7 @@ https://www.elastic.co/guide/en/logstash/current/plugins-filters-date.html
 
 https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html
 
-** Kibana visualization
+* LAPD data visualization in Kibana
 
 #+ATTR_REVEAL: :frag (appear)
 - Settings tab
@@ -151,6 +151,16 @@ https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.h
   - Construct a dashboard
   - How to import / export the dashboard
 
+** Kibana plugins
+ 
+ - Sense https://www.elastic.co/guide/en/sense/current/sense-ui.html
+ - Timelion https://www.elastic.co/blog/timelion-timeline  
+	- Do as in https://github.com/mbertani/elk-workshop/tree/booster2016/kibana/timelion to install a missing function for outlier detection
+ 
+** Timeseries analysis with Timelion
+
+Check the query constructor at https://github.com/mbertani/elk-workshop/tree/booster2016/kibana/timelion/timelion_analysis.ps1 
+  
 * Wrap-up
 
 ** Useful links
