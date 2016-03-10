@@ -187,6 +187,11 @@ Check the query constructor at https://github.com/mbertani/elk-workshop/tree/boo
   - Monthly "-%{+YYYY.MM}"
 - Defaults to daily: "logstash-%{+YYYY.MM.dd}"
 
+** Feedback
+
+We would love to hear from you. Could you fill the following form? It should not take more than 3 minutes.
+
+http://goo.gl/forms/TGKfF7u28Q
 
 * HTTP Access Logs (Homework)
 
