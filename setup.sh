@@ -39,8 +39,8 @@ fi
 }
 
 
-esVersion="elasticsearch-2.2.0"
-elasticsearchURL="https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.2.0/elasticsearch-2.2.0.tar.gz"
+esVersion="elasticsearch-2.3.5"
+elasticsearchURL="https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.3.5/elasticsearch-2.3.5.tar.gz"
 esFilename=$esVersion.tar.gz
 
 download $elasticsearchURL $esFilename
@@ -50,10 +50,10 @@ echo-green "Installing elasticsearch plugins"
 # ES Plugins
 ./$esVersion/bin/plugin install lmenezes/elasticsearch-kopf/master
 # https://github.com/sirensolutions/siren-join
-./$esVersion/bin/plugin install solutions.siren/siren-join/2.2.0
+# ./$esVersion/bin/plugin install solutions.siren/siren-join/2.2.0
 
-lsVersion="logstash-2.1.1"
-logstashURL="https://download.elastic.co/logstash/logstash/logstash-2.1.1.tar.gz"
+lsVersion="logstash-2.3.4"
+logstashURL="https://download.elastic.co/logstash/logstash/logstash-2.3.4.tar.gz"
 logstashFile=$lsVersion.tar.gz
 
 download $logstashURL $logstashFile
@@ -72,12 +72,12 @@ osversion () {
 if osversion 
 then
    echo "64-bits OS detected"
-   kVersion="kibana-4.4.1-linux-x64"
-   kibanaURL="https://download.elastic.co/kibana/kibana/kibana-4.4.1-linux-x64.tar.gz"
+   kVersion="kibana-4.5.4-linux-x64"
+   kibanaURL="https://download.elastic.co/kibana/kibana/kibana-4.5.4-linux-x64.tar.gz"
 else
    echo "32-bits OS detected"
-   kVersion="kibana-4.4.1-linux-x86"
-   kibanaURL="https://download.elastic.co/kibana/kibana/kibana-4.4.1-linux-x86.tar.gz"
+   kVersion="kibana-4.5.4-linux-x86"
+   kibanaURL="https://download.elastic.co/kibana/kibana/kibana-4.5.4-linux-x86.tar.gz"
 fi
 
 echo "Using URL for kibana $kibanaURL"
@@ -90,9 +90,4 @@ echo-green "Installing kibana plugins"
 # Kibana plugins
 ./$kVersion/bin/kibana plugin -i kibana/timelion
 ./$kVersion/bin/kibana plugin -i elastic/sense
-# https://github.com/sirensolutions/kibi_radar_vis
-./$kVersion/bin/kibana plugin -i kibi_radar_vis -u  https://github.com/sirensolutions/kibi_radar_vis/archive/0.1.0.zip
-# https://github.com/sirensolutions/kibi_wordcloud_vis
-./$kVersion/bin/kibana plugin -i kibi_wordcloud_vis -u https://github.com/sirensolutions/kibi_wordcloud_vis/raw/0.1.0/target/kibi_wordcloud_vis-0.1.0.zip
-# https://github.com/sirensolutions/kibi_timeline_vis
-./$kVersion/bin/kibana plugin -i kibi_timeline_vis -u https://github.com/sirensolutions/kibi_timeline_vis/raw/0.1.1/target/kibi_timeline_vis-0.1.1.zip
+
