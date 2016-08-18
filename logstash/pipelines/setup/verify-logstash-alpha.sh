@@ -1,4 +1,4 @@
-logstashVersion="logstash-2.3.4"
+logstashVersion="logstash-5.0.0-alpha5"
 logstashBinPath="../../../$logstashVersion/bin"
 
 function echo-green() {
@@ -23,8 +23,8 @@ then
 fi
 
 echo-green "To verify that the configuration file is OK, run the following command"
-echo "../../../$logstashVersion/bin/logstash agent -f verify.conf --configtest"
-../../../$logstashVersion/bin/logstash agent -f verify.conf --configtest
+echo "../../../$logstashVersion/bin/logstash -f verify.conf --configtest"
+../../../$logstashVersion/bin/logstash -f verify.conf -t
 
 #Start-Sleep 2
 
@@ -33,5 +33,5 @@ echo-green "Terminate with Ctrl+C."
 
 #Start-Sleep 1
 
-echo "../../../$logstashVersion/bin/logstash agent -f verify.conf"
-../../../$logstashVersion/bin/logstash agent -f verify.conf
+echo "../../../$logstashVersion/bin/logstash -f verify.conf"
+../../../$logstashVersion/bin/logstash -f verify.conf
