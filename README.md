@@ -1,5 +1,4 @@
-# [Hands on workshop with ELK for JavaZone 2016](https://2016.javazone.no/program/law-and-order-in-la-to-process-and-search-with-elk)
-
+# [Law and Order in LA - To Process and Search with ELK](https://2016.javazone.no/program/law-and-order-in-la-to-process-and-search-with-elk)
 This repo contains all the resources needed for the workshop.
 
 # Participant requirements
