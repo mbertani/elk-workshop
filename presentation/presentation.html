@@ -2,11 +2,17 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<title>Hands-on ELK Workshop</title>
-<meta name="author" content="(Marco Bertani-Økland and Sigmund Hansen)"/>
+<title>Law and Order in LA <br> To Process and Search with ELK</title>
+<meta name="author" content="(Marco Bertani-Økland  (export-snippet (:back-end html :value <br> :begin 22 :end 36 :post-blank 1 :parent #0)) Sigmund Hansen)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
 <link rel="stylesheet" href="./reveal.js/css/reveal.css"/>
+
 <link rel="stylesheet" href="./reveal.js/css/theme/night.css" id="theme"/>
-<link rel="stylesheet" href=""/>
+
+<link rel="stylesheet" href="custom.css"/>
+
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
     if( window.location.search.match( /print-pdf/gi ) ) {
@@ -21,11 +27,7 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide">
-<h1>Hands-on ELK Workshop</h1>
-<h2>Marco Bertani-Økland and Sigmund Hansen</h2>
-<h2><a href="mailto:mab@computas.com sha@computas.com">mab@computas.com sha@computas.com</a></h2>
-<h2></h2>
+<section id="sec-title-slide"><h1 class="title">Law and Order in LA <br> To Process and Search with ELK</h1><h2 class="author">Marco Bertani-Økland <br> Sigmund Hansen</h2><p class="date">Created: 2016-08-28 søn. 17:38</p>
 </section>
 
 <section>
@@ -47,7 +49,7 @@
 
 <tr>
 <td class="org-left"><b>09:15-10:30</b></td>
-<td class="org-left">Logstash with Sigmund</td>
+<td class="org-left">Logstash</td>
 </tr>
 
 <tr>
@@ -57,12 +59,17 @@
 
 <tr>
 <td class="org-left"><b>10:45-11:15</b></td>
-<td class="org-left">Logstash with Sigmund continues</td>
+<td class="org-left">Logstash continues</td>
 </tr>
 
 <tr>
-<td class="org-left"><b>11:15-12:15</b></td>
-<td class="org-left">Kibana with Marco</td>
+<td class="org-left"><b>11:15-11:30</b></td>
+<td class="org-left">Pause + question</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>11:30-13:00</b></td>
+<td class="org-left">Kibana</td>
 </tr>
 </tbody>
 </table>
@@ -115,13 +122,13 @@ The philosophy behind these tools is that getting immediate, actionable insight 
 <h2 id="orgheadline7">Setup</h2>
 <ul>
 <li>Clone <a href="https://github.com/mbertani/elk-workshop">https://github.com/mbertani/elk-workshop</a></li>
-<li>Follow instructions at <a href="https://github.com/mbertani/elk-workshop/tree/booster2016">https://github.com/mbertani/elk-workshop/tree/booster2016</a></li>
-<li>Edit elasticsearch-2.2.0/config/elasticsearch.yml
+<li>Follow instructions at <a href="https://github.com/mbertani/elk-workshop/tree/javazone2016">https://github.com/mbertani/elk-workshop/tree/javazone2016</a></li>
+<li>Edit elasticsearch-2.3.5/config/elasticsearch.yml
 <ul>
 <li>cluster.name: ${HOSTNAME}</li>
 
 </ul></li>
-<li>Set Enviroment variable ES_HEAP_SIZE=4g
+<li>Set Enviroment variable ES_HEAP_SIZE=1g
 <ul>
 <li>For more information: <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/heap-sizing.html">https://www.elastic.co/guide/en/elasticsearch/guide/current/heap-sizing.html</a></li>
 
@@ -133,14 +140,14 @@ The philosophy behind these tools is that getting immediate, actionable insight 
 <section id="slide-orgheadline5">
 <h3 id="orgheadline5">Shell</h3>
 <ul>
-<li>Run &lt;elk-workshop&gt;/elasticsearch-2.2.0/bin/elasticsearch(.bat)
+<li>Run &lt;elk-workshop&gt;/elasticsearch-2.3.5/bin/elasticsearch(.bat)
 <ul>
-<li>Open your browser at <a href="http://127.0.0.1:9200/">http://127.0.0.1:9200/</a></li>
+<li>Open your browser at <a href="http://127.0.0.1:9200">http://127.0.0.1:9200</a></li>
 
 </ul></li>
-<li>Run &lt;elk-workshop&gt;/kibana-4.4.1-xxx/bin/kibana(.bat)
+<li>Run &lt;elk-workshop&gt;/kibana-4.5.4/bin/kibana(.bat)
 <ul>
-<li>Open your browser at <a href="http://127.0.0.1:5601/">http://127.0.0.1:5601/</a></li>
+<li>Open your browser at <a href="http://127.0.0.1:5601">http://127.0.0.1:5601</a></li>
 
 </ul></li>
 <li>Start a shell in &lt;elk-workshop&gt;/logstash/pipelines/setup
@@ -156,7 +163,7 @@ The philosophy behind these tools is that getting immediate, actionable insight 
 <section id="slide-orgheadline6">
 <h3 id="orgheadline6">Verify Logstash</h3>
 <ul>
-<li>Follow instructions at <a href="https://github.com/mbertani/elk-workshop/blob/booster2016/logstash/pipelines/setup/Setup.md">https://github.com/mbertani/elk-workshop/blob/booster2016/logstash/pipelines/setup/Setup.md</a></li>
+<li>Follow instructions at <a href="https://github.com/mbertani/elk-workshop/blob/javazone2016/logstash/pipelines/setup/Setup.md">https://github.com/mbertani/elk-workshop/blob/javazone2016/logstash/pipelines/setup/Setup.md</a></li>
 
 </ul>
 
@@ -165,7 +172,7 @@ Linux:
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-bash">../../../logstash-2.1.1/bin/logstash agent -f verify.conf --configtest
+<pre  class="src src-bash">../../../logstash-2.3.4/bin/logstash agent -f verify.conf --configtest
 </pre>
 </div>
 
@@ -174,7 +181,7 @@ Windows:
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-bash">..\..\..\logstash-2.1.1\bin\logstash agent -f verify.conf --configtest
+<pre  class="src src-bash">..<span style="color: #2d9574;">\.</span>.<span style="color: #2d9574;">\.</span>.\logstash-2.3.4\bin\logstash agent -f verify.conf --configtest
 </pre>
 </div>
 
@@ -442,7 +449,7 @@ Windows:
 <li>Sense <a href="https://www.elastic.co/guide/en/sense/current/sense-ui.html">https://www.elastic.co/guide/en/sense/current/sense-ui.html</a></li>
 <li>Timelion <a href="https://www.elastic.co/blog/timelion-timeline">https://www.elastic.co/blog/timelion-timeline</a>  
 <ul>
-<li>Do as in <a href="https://github.com/mbertani/elk-workshop/tree/booster2016/kibana/timelion">https://github.com/mbertani/elk-workshop/tree/booster2016/kibana/timelion</a> to install a missing function for outlier detection</li>
+<li>Do as in <a href="https://github.com/mbertani/elk-workshop/tree/javazone2016/kibana/timelion">https://github.com/mbertani/elk-workshop/tree/javazone2016/kibana/timelion</a> to install a missing function for outlier detection</li>
 
 </ul></li>
 
@@ -452,7 +459,7 @@ Windows:
 <section id="slide-orgheadline15">
 <h3 id="orgheadline15">Timeseries analysis with Timelion</h3>
 <p>
-Check the query constructor at <a href="https://github.com/mbertani/elk-workshop/tree/booster2016/kibana/timelion/timelion_analysis.ps1">https://github.com/mbertani/elk-workshop/tree/booster2016/kibana/timelion/timelion_analysis.ps1</a> 
+Check the query constructor at <a href="https://github.com/mbertani/elk-workshop/tree/javazone2016/kibana/timelion/timelion_analysis.ps1">https://github.com/mbertani/elk-workshop/tree/javazone2016/kibana/timelion/timelion_analysis.ps1</a> 
 </p>
 
 </section>
@@ -560,7 +567,7 @@ Windows:
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-bash">..\..\..\logstash-2.1.1\bin\logstash agent -f 1.conf
+<pre  class="src src-bash">..<span style="color: #2d9574;">\.</span>.<span style="color: #2d9574;">\.</span>.\logstash-2.3.4\bin\logstash agent -f <span style="color: #a45bad;">1.conf</span>
 </pre>
 </div>
 
@@ -569,7 +576,7 @@ Linux:
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-bash">../../../logstash-2.1.1/bin/logstash agent -f 1.conf
+<pre  class="src src-bash">../../../logstash-2.3.4/bin/logstash agent -f <span style="color: #a45bad;">1.conf</span>
 </pre>
 </div>
 
@@ -731,7 +738,7 @@ controls: true,
 progress: true,
 history: false,
 center: true,
-slideNumber: true,
+slideNumber: 'c',
 rollingLinks: false,
 keyboard: true,
 overview: true,
