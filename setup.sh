@@ -22,7 +22,7 @@ then
     echo-red "./$filename exists and will not be downloaded again"
 else
     echo-green "Downloading from $url into ./$filename"
-    wget $url -O $filename
+    wget -nv $url -O $filename
 fi
 }
 
