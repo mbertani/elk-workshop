@@ -63,8 +63,8 @@ decompress $logstashFile $lsVersion
 
 echo-green "Installing logstash plugins"
 # Logstash plugins
-./$lsVersion/bin/plugin install logstash-input-jdbc
-./$lsVersion/bin/plugin install logstash-input-beats
+./$lsVersion/bin/logstash-plugin install logstash-input-jdbc
+./$lsVersion/bin/logstash-plugin install logstash-input-beats
 
 
 osversion () {
