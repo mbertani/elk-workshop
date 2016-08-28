@@ -1,36 +1,12 @@
-# elk-workshop
-Hands on workshop with ELK
+# [Law and Order in LA - To Process and Search with ELK](https://2016.javazone.no/program/law-and-order-in-la-to-process-and-search-with-elk)
+This repo contains all the resources needed for the workshop.
+
+# Participant requirements
+- Own laptop with 3GB free disk space. 
+- VirtualBox 5.x  
+- Make sure you also have at least 4 GB RAM available. 
 
 # Setup
-- Clone this repository in your local system
-- Download Elasticsearch, Logstash and Kibana 
-- Unzip all 3 files inside your local repository
+ TBD
 
-## Links
-
-### Elasticsearch 2.1.1
-
-https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.1.1/elasticsearch-2.1.1.tar.gz
-https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/zip/elasticsearch/2.1.1/elasticsearch-2.1.1.zip
-
-### Logstash 2.1.1
-
-https://download.elastic.co/logstash/logstash/logstash-2.1.1.tar.gz
-https://download.elastic.co/logstash/logstash/logstash-2.1.1.zip
-
-### Kibana 4.3.1
-
-https://download.elastic.co/kibana/kibana/kibana-4.3.1-windows.zip
-https://download.elastic.co/kibana/kibana/kibana-4.3.1-linux-x64.tar.gz
-https://download.elastic.co/kibana/kibana/kibana-4.3.1-linux-x86.tar.gz
-
-
-# Logstash pipelines
-
-## LAPD 
-
-In this pipeline we analize the criminal records for LAPD. To get started, navigate to logtash/pipelines/lapd and follow the instructions at the Readme.md file.
-
-## HTTPD
-
-In this pipeline we analyze HTTP access logs, conforming to the Apache Combined Log Format. This format is commonly used by most HTTP servers. To get started, navigate to logstash/pipelines/httpd and follow the instructions in the Readme.md file.
+We will provide a link to a VM with everything you need already installed, or manual setup instructions for a linux environment.

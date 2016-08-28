@@ -6,15 +6,11 @@
 
 * Agenda for today
 |---------------|--------------------------------------|
-| *17:00-17:30* | Intro + food (we speak, you eat )    |
-| *17:30-18:00* | Configuration (Install ELK + repo)   |
-| *18:00-18:40* | 1st pipeline logstash + Elasticsearch|
-| *18:40-18:50* | pause                                |
-| *18:50-19:20* | 1st pipeline visualization in Kibana |
-| *19:20-19:30* | Pause                                |  
-| *19:30-20:10* | 2nd pipeline logstash + Elasticsearch|
-| *20:10-20:20* | Pause                                |
-| *20:20-21:00* | 2nd pipeline visualization in Kibana |
+| *09:00-09:15* | Intro + setup    |
+| *09:15-10:30* | Logstash with Sigmund   |
+| *10:30-10:45* | Pause + questions |
+| *10:45-11:15* | Logstash with Sigmund continues |
+| *11:15-12:15* | Kibana with Marco |
 |-------------+--------------------------------------|
 
 
@@ -46,20 +42,17 @@ The philosophy behind these tools is that getting immediate, actionable insight 
 
 * Setup
 - Clone https://github.com/mbertani/elk-workshop
-- Extract at the root of the repository:
-  - Elasticsearch
-  - Logstash
-  - Kibana
-- Edit elasticsearch-2.1.1/config/elasticsearch.yml
+- Follow instructions at https://github.com/mbertani/elk-workshop/tree/booster2016
+- Edit elasticsearch-2.2.0/config/elasticsearch.yml
   - cluster.name: ${HOSTNAME}
+- Set Enviroment variable ES_HEAP_SIZE=4g
+  - For more information: https://www.elastic.co/guide/en/elasticsearch/guide/current/heap-sizing.html
 
 ** Shell
 
-- Start a shell in <elk-workshop>/elasticsearch-2.1.1/bin
-  - Run elasticsearch
+- Run <elk-workshop>/elasticsearch-2.2.0/bin/elasticsearch(.bat)
   - Open your browser at http://127.0.0.1:9200
-- Start a shell in <elk-workshop>/kibana-4.3.1-xxx/bin
-  - Run kibana
+- Run <elk-workshop>/kibana-4.4.1-xxx/bin/kibana(.bat)
   - Open your browser at http://127.0.0.1:5601
 - Start a shell in <elk-workshop>/logstash/pipelines/setup
   - This will be used for logstash 
@@ -67,7 +60,7 @@ The philosophy behind these tools is that getting immediate, actionable insight 
 
 ** Verify Logstash
 
-- Follow instructions at setup.txt
+- Follow instructions at https://github.com/mbertani/elk-workshop/blob/booster2016/logstash/pipelines/setup/Setup.md
 
 Linux:
 #+BEGIN_SRC bash
@@ -81,8 +74,8 @@ Windows:
 
 * Pipelines
 
-- LAPD Crime Reports with Marco
-- HTTP Access Logs with Sigmund
+- LAPD Crime Reports
+- HTTP Access Logs (Homework)
 
 * LAPD Crime Reports
 
@@ -103,7 +96,7 @@ Windows:
 ** 1st step: Read the data
 
 | *What:* | Learn how to use the file input plugin |
-| *How:*  | Open 1.txt and roll up your sleeves |
+| *How:*  | Open 1.md and roll up your sleeves  |
 | *When:* | Now. You have 3 minutes! |
 
 *Ærg help!* https://www.elastic.co/guide/en/logstash/current/plugins-inputs-file.html
@@ -111,7 +104,7 @@ Windows:
 ** 2nd step: Give structure to the data
 
 | *What:* | Familiarize yourself with the csv filter plugin |
-| *How:*  | Open 2.txt and read.|
+| *How:*  | Open 2.md and read. |
 | *When:* | Now. You have 5 minutes! |
 
 *Ærg help!* 
@@ -121,7 +114,7 @@ https://www.elastic.co/guide/en/logstash/current/plugins-filters-csv.html
 ** 3rd step: Clean and format the data
 
 | *What:*  | Familiarize yourself with mutate and date filter plugins |
-| *How:* | Open 3.txt |
+| *How:* | Open 3.md  |
 | *When:* | Now. You have 5 minutes! |
 
 *Ærg help!*  
@@ -132,14 +125,14 @@ https://www.elastic.co/guide/en/logstash/current/plugins-filters-date.html
 
 ** 4th step: Export data to elasticsearch
 | *What:*  | Familiarize yourself with elasticsearch output plugin    |
-| *How:* | Open 4.txt |
+| *How:* | Open 4.md  |
 | *When:* | Now. You have 5 minutes! |
 
 *Ærg help!*  
 
 https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html
 
-** Kibana visualization
+* LAPD data visualization in Kibana
 
 #+ATTR_REVEAL: :frag (appear)
 - Settings tab
@@ -153,12 +146,54 @@ https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.h
   - Line charts for trends
   - Metrics
   - Filter aggregations
+  - Markdown
 - Dashboard tab
   - Construct a dashboard
   - How to import / export the dashboard
 
+** Kibana plugins
+ 
+ - Sense https://www.elastic.co/guide/en/sense/current/sense-ui.html
+ - Timelion https://www.elastic.co/blog/timelion-timeline  
+	- Do as in https://github.com/mbertani/elk-workshop/tree/booster2016/kibana/timelion to install a missing function for outlier detection
+ 
+** Timeseries analysis with Timelion
 
-* HTTP Access Logs
+Check the query constructor at https://github.com/mbertani/elk-workshop/tree/booster2016/kibana/timelion/timelion_analysis.ps1 
+  
+* Wrap-up
+
+** Useful links
+
+- Follow the blog https://www.elastic.co/blog
+- Some books
+ - https://www.packtpub.com/big-data-and-business-intelligence/elasticsearch-cookbook
+ - https://www.packtpub.com/big-data-and-business-intelligence/learning-elk-stack 
+
+** Unit/Integration Tests
+
+- Testing Logstash configurations can be difficult
+- It is possible to write unit tests in Ruby:
+- http://stackoverflow.com/questions/18823917/how-to-implement-the-unit-or-integration-tests-for-logstash-configuration
+** Time-based Indices
+
+- You can add date fields to the index name
+  - Slight increase in storage requirements
+  - Allows deleting partial data, which saves storage
+  - Increased performance?
+- You may want indices to be:
+  - Daily: "-%{+YYYY.MM.dd}"
+  - Weekly "-%{+xxxx.ww}"
+  - Monthly "-%{+YYYY.MM}"
+- Defaults to daily: "logstash-%{+YYYY.MM.dd}"
+
+** Feedback
+
+We would love to hear from you. Could you fill the following form? It should not take more than 3 minutes.
+
+http://goo.gl/forms/TGKfF7u28Q
+
+* HTTP Access Logs (Homework)
 
 Access logs generated by a script based on: \\
 https://gist.github.com/fetep/2037301
@@ -278,28 +313,3 @@ Linux:
 - Unzip the *data/access.zip* archive
 - Run logstash with the final configuration
 
-* Wrap-up
-
-** Useful links
-
-- Follow the blog https://www.elastic.co/blog
-- Some books
- - https://www.packtpub.com/big-data-and-business-intelligence/elasticsearch-cookbook
- - https://www.packtpub.com/big-data-and-business-intelligence/learning-elk-stack 
-
-** Unit/Integration Tests
-
-- Testing Logstash configurations can be difficult
-- It is possible to write unit tests in Ruby:
-- http://stackoverflow.com/questions/18823917/how-to-implement-the-unit-or-integration-tests-for-logstash-configuration
-** Time-based Indices
-
-- You can add date fields to the index name
-  - Slight increase in storage requirements
-  - Allows deleting partial data, which saves storage
-  - Increased performance?
-- You may want indices to be:
-  - Daily: "-%{+YYYY.MM.dd}"
-  - Weekly "-%{+xxxx.ww}"
-  - Monthly "-%{+YYYY.MM}"
-- Defaults to daily: "logstash-%{+YYYY.MM.dd}"
