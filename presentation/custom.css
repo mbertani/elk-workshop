@@ -1,0 +1,4 @@
+.title { font-size: 2em !important }
+.title::first-line { font-size: 1.5em !important }
+.author { font-size: 1.5em !important }
+.date { display: none }

@@ -1,17 +1,19 @@
 #+OPTIONS: toc:nil email:nil H:4 num:nil ^:nil
-#+TITLE: Hands-on ELK Workshop
-#+AUTHOR: Marco Bertani-Økland and Sigmund Hansen
+#+TITLE: Law and Order in LA @@html:<br>@@ To Process and Search with ELK
+#+AUTHOR: Marco Bertani-Økland @@html:<br>@@ Sigmund Hansen
 #+EMAIL: mab@computas.com sha@computas.com
 #+REVEAL_THEME: night
+#+REVEAL_EXTRA_CSS: custom.css
 
 * Agenda for today
-|---------------|--------------------------------------|
-| *09:00-09:15* | Intro + setup    |
-| *09:15-10:30* | Logstash with Sigmund   |
-| *10:30-10:45* | Pause + questions |
-| *10:45-11:15* | Logstash with Sigmund continues |
-| *11:15-12:15* | Kibana with Marco |
-|-------------+--------------------------------------|
+|---------------+--------------------|
+| *09:00-09:15* | Intro + setup      |
+| *09:15-10:30* | Logstash           |
+| *10:30-10:45* | Pause + questions  |
+| *10:45-11:15* | Logstash continues |
+| *11:15-11:30* | Pause + question   |
+| *11:30-13:00* | Kibana             |
+|---------------+--------------------|
 
 
 * What is the *ELK* platform?
@@ -42,17 +44,17 @@ The philosophy behind these tools is that getting immediate, actionable insight 
 
 * Setup
 - Clone https://github.com/mbertani/elk-workshop
-- Follow instructions at https://github.com/mbertani/elk-workshop/tree/booster2016
-- Edit elasticsearch-2.2.0/config/elasticsearch.yml
+- Follow instructions at https://github.com/mbertani/elk-workshop/tree/javazone2016
+- Edit elasticsearch-2.3.5/config/elasticsearch.yml
   - cluster.name: ${HOSTNAME}
-- Set Enviroment variable ES_HEAP_SIZE=4g
+- Set Enviroment variable ES_HEAP_SIZE=1g
   - For more information: https://www.elastic.co/guide/en/elasticsearch/guide/current/heap-sizing.html
 
 ** Shell
 
-- Run <elk-workshop>/elasticsearch-2.2.0/bin/elasticsearch(.bat)
+- Run <elk-workshop>/elasticsearch-2.3.5/bin/elasticsearch(.bat)
   - Open your browser at http://127.0.0.1:9200
-- Run <elk-workshop>/kibana-4.4.1-xxx/bin/kibana(.bat)
+- Run <elk-workshop>/kibana-4.5.4/bin/kibana(.bat)
   - Open your browser at http://127.0.0.1:5601
 - Start a shell in <elk-workshop>/logstash/pipelines/setup
   - This will be used for logstash 
@@ -60,16 +62,16 @@ The philosophy behind these tools is that getting immediate, actionable insight 
 
 ** Verify Logstash
 
-- Follow instructions at https://github.com/mbertani/elk-workshop/blob/booster2016/logstash/pipelines/setup/Setup.md
+- Follow instructions at https://github.com/mbertani/elk-workshop/blob/javazone2016/logstash/pipelines/setup/Setup.md
 
 Linux:
 #+BEGIN_SRC bash
-../../../logstash-2.1.1/bin/logstash agent -f verify.conf --configtest
+../../../logstash-2.3.4/bin/logstash agent -f verify.conf --configtest
 #+END_SRC
 
 Windows:
 #+BEGIN_SRC bash
-..\..\..\logstash-2.1.1\bin\logstash agent -f verify.conf --configtest
+..\..\..\logstash-2.3.4\bin\logstash agent -f verify.conf --configtest
 #+END_SRC
 
 * Pipelines
@@ -155,11 +157,11 @@ https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.h
  
  - Sense https://www.elastic.co/guide/en/sense/current/sense-ui.html
  - Timelion https://www.elastic.co/blog/timelion-timeline  
-	- Do as in https://github.com/mbertani/elk-workshop/tree/booster2016/kibana/timelion to install a missing function for outlier detection
+	- Do as in https://github.com/mbertani/elk-workshop/tree/javazone2016/kibana/timelion to install a missing function for outlier detection
  
 ** Timeseries analysis with Timelion
 
-Check the query constructor at https://github.com/mbertani/elk-workshop/tree/booster2016/kibana/timelion/timelion_analysis.ps1 
+Check the query constructor at https://github.com/mbertani/elk-workshop/tree/javazone2016/kibana/timelion/timelion_analysis.ps1 
   
 * Wrap-up
 
@@ -215,12 +217,12 @@ Logs, exercises and configuration files can be found in *logstash/pipelines/http
 
 Windows:
 #+BEGIN_SRC bash
-..\..\..\logstash-2.1.1\bin\logstash agent -f 1.conf
+..\..\..\logstash-2.3.4\bin\logstash agent -f 1.conf
 #+END_SRC
 
 Linux:
 #+BEGIN_SRC bash
-../../../logstash-2.1.1/bin/logstash agent -f 1.conf
+../../../logstash-2.3.4/bin/logstash agent -f 1.conf
 #+END_SRC
 
 **** Match Option
@@ -312,4 +314,3 @@ Linux:
 
 - Unzip the *data/access.zip* archive
 - Run logstash with the final configuration
-

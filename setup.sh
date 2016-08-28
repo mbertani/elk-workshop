@@ -22,7 +22,7 @@ then
     echo-red "./$filename exists and will not be downloaded again"
 else
     echo-green "Downloading from $url into ./$filename"
-    wget $url -O $filename
+    wget -nv $url -O $filename
 fi
 }
 
@@ -63,8 +63,8 @@ decompress $logstashFile $lsVersion
 
 echo-green "Installing logstash plugins"
 # Logstash plugins
-./$lsVersion/bin/plugin install logstash-input-jdbc
-./$lsVersion/bin/plugin install logstash-input-beats
+./$lsVersion/bin/logstash-plugin install logstash-input-jdbc
+./$lsVersion/bin/logstash-plugin install logstash-input-beats
 
 
 osversion () {
