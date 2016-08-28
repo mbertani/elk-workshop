@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function echo-green() {
 green=`tput setaf 2`
 reset=`tput sgr0`
