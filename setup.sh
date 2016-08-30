@@ -51,6 +51,7 @@ decompress $esFilename $esVersion
 echo-green "Installing elasticsearch plugins"
 # ES Plugins
 ./$esVersion/bin/plugin install lmenezes/elasticsearch-kopf/master
+./$esVersion/bin/plugin install https://github.com/sscarduzio/elasticsearch-readonlyrest-plugin/blob/master/download/elasticsearch-readonlyrest-v1.9.4_es-v2.3.5.zip?raw=true
 # https://github.com/sirensolutions/siren-join
 # ./$esVersion/bin/plugin install solutions.siren/siren-join/2.2.0
 
