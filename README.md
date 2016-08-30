@@ -7,6 +7,12 @@ This repo contains all the resources needed for the workshop.
 - Make sure you also have at least 4 GB RAM available. 
 
 # Setup
- TBD
 
-We will provide a link to a VM with everything you need already installed, or manual setup instructions for a linux environment.
+Before you come to the workshop, you can do the following to save time:
+- [Follow the instructions provided here](https://github.com/Sardtok/elk-workshop-vm/)
+- Run `vagrant ssh` to connect to the VM
+- Go into the workshop git repo: `cd elk-workshop`
+- Update the repo: `git pull`
+- Run the setup script: `./setup.sh`
+- Go to the data folder: `cd logstash/pipelines/lapd/data/`
+- Decompress the data: `tar xvfz data.tar.gz`
