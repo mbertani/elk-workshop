@@ -1,14 +1,31 @@
 [
   {
-    "_id": "lapd_dashboard",
+    "_id": "fasit_lapd",
     "_type": "dashboard",
     "_source": {
-      "title": "lapd_dashboard",
+      "title": "fasit_lapd",
       "hits": 0,
       "description": "",
-      "panelsJSON": "[{\"col\":7,\"id\":\"lapd_bars_timestamp\",\"panelIndex\":1,\"row\":8,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"lapd_count\",\"panelIndex\":2,\"row\":5,\"size_x\":4,\"size_y\":3,\"type\":\"visualization\"},{\"col\":1,\"id\":\"lapd_description\",\"panelIndex\":3,\"row\":1,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":4,\"id\":\"lapd_pie_bottom5_adress\",\"panelIndex\":4,\"row\":8,\"size_x\":3,\"size_y\":2,\"type\":\"visualization\"},{\"col\":1,\"id\":\"lapd_pie_top5_adress\",\"panelIndex\":5,\"row\":8,\"size_x\":3,\"size_y\":2,\"type\":\"visualization\"},{\"col\":1,\"id\":\"lapd_pie_top5_crime_description\",\"panelIndex\":6,\"row\":10,\"size_x\":3,\"size_y\":2,\"type\":\"visualization\"},{\"col\":4,\"id\":\"lapd_pie_bottom5_crime_description\",\"panelIndex\":7,\"row\":10,\"size_x\":3,\"size_y\":2,\"type\":\"visualization\"},{\"col\":5,\"id\":\"lapd_area_crime_types\",\"panelIndex\":10,\"row\":1,\"size_x\":8,\"size_y\":4,\"type\":\"visualization\"},{\"col\":5,\"id\":\"lapd_lines_crime_types\",\"panelIndex\":11,\"row\":5,\"size_x\":8,\"size_y\":3,\"type\":\"visualization\"},{\"id\":\"lapd_table_top5_st_crime_description\",\"type\":\"visualization\",\"panelIndex\":12,\"size_x\":6,\"size_y\":3,\"col\":1,\"row\":12},{\"id\":\"lapd_table_top5_t_crime_description\",\"type\":\"visualization\",\"panelIndex\":13,\"size_x\":6,\"size_y\":3,\"col\":7,\"row\":12},{\"id\":\"lapd_heatmap\",\"type\":\"visualization\",\"panelIndex\":14,\"size_x\":6,\"size_y\":8,\"col\":1,\"row\":15},{\"id\":\"lapd_circles_map\",\"type\":\"visualization\",\"panelIndex\":15,\"size_x\":6,\"size_y\":8,\"col\":7,\"row\":15}]",
-      "optionsJSON": "{\"darkTheme\":true}",
-      "uiStateJSON": "{\"P-1\":{\"vis\":{\"legendOpen\":false}},\"P-10\":{\"vis\":{\"colors\":{\"BATTERY\":\"#890F02\",\"BURGLARY\":\"#EF843C\",\"Everything else\":\"#962D82\"}}},\"P-11\":{\"vis\":{\"colors\":{\"THEFT\":\"#EAB839\"}}}}",
+      "panelsJSON": "[{\"col\":7,\"id\":\"fasit_address_pie\",\"panelIndex\":1,\"row\":9,\"size_x\":3,\"size_y\":2,\"type\":\"visualization\"},{\"col\":10,\"id\":\"fasit_area_code_pie\",\"panelIndex\":2,\"row\":9,\"size_x\":3,\"size_y\":2,\"type\":\"visualization\"},{\"col\":1,\"id\":\"fasit_area_name_pie\",\"panelIndex\":3,\"row\":3,\"size_x\":3,\"size_y\":2,\"type\":\"visualization\"},{\"col\":1,\"id\":\"fasit_case_count\",\"panelIndex\":4,\"row\":1,\"size_x\":3,\"size_y\":2,\"type\":\"visualization\"},{\"col\":1,\"id\":\"fasit_crime_description_pie\",\"panelIndex\":6,\"row\":9,\"size_x\":3,\"size_y\":2,\"type\":\"visualization\"},{\"col\":7,\"id\":\"fasit_map_scaled_circles\",\"panelIndex\":7,\"row\":5,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"id\":\"fasit_crime_classification_donut\",\"type\":\"visualization\",\"panelIndex\":8,\"size_x\":6,\"size_y\":4,\"col\":1,\"row\":5},{\"id\":\"fasit_crime_classification_line\",\"type\":\"visualization\",\"panelIndex\":9,\"size_x\":9,\"size_y\":4,\"col\":4,\"row\":1},{\"id\":\"fasit_crime_description_significant_terms\",\"type\":\"visualization\",\"panelIndex\":10,\"size_x\":3,\"size_y\":2,\"col\":4,\"row\":9}]",
+      "optionsJSON": "{\"darkTheme\":false}",
+      "uiStateJSON": "{\"P-1\":{\"spy\":{\"mode\":{\"fill\":false,\"name\":null}}},\"P-2\":{\"spy\":{\"mode\":{\"fill\":false,\"name\":null}}},\"P-3\":{\"spy\":{\"mode\":{\"fill\":false,\"name\":null}}},\"P-6\":{\"spy\":{\"mode\":{\"name\":null,\"fill\":false}},\"vis\":{\"legendOpen\":true}}}",
+      "version": 1,
+      "timeRestore": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[{\"meta\":{\"index\":\"lapd-*\",\"key\":\"query\",\"value\":\"{\\\"match_all\\\":{}}\",\"disabled\":true,\"negate\":false,\"alias\":\"3km from Grand Park\"},\"query\":{\"match_all\":{}},\"$state\":{\"store\":\"appState\"},\"filter\":{\"geo_distance\":{\"distance\":\"3km\",\"gps\":{\"lat\":34.05621,\"lon\":-118.245414}}}},{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}}}]}"
+      }
+    }
+  },
+  {
+    "_id": "fasit_ts_outliers",
+    "_type": "dashboard",
+    "_source": {
+      "title": "fasit_ts_outliers",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"col\":4,\"id\":\"fasit_ts_crime_classification_percentage\",\"panelIndex\":1,\"row\":1,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"id\":\"fasit_ts_assault\",\"type\":\"visualization\",\"panelIndex\":2,\"size_x\":3,\"size_y\":2,\"col\":7,\"row\":7},{\"id\":\"fasit_ts_battery_not_assault\",\"type\":\"visualization\",\"panelIndex\":3,\"size_x\":3,\"size_y\":2,\"col\":4,\"row\":5},{\"id\":\"fasit_ts_burglary\",\"type\":\"visualization\",\"panelIndex\":4,\"size_x\":3,\"size_y\":2,\"col\":7,\"row\":5},{\"id\":\"fasit_ts_homicide\",\"type\":\"visualization\",\"panelIndex\":5,\"size_x\":3,\"size_y\":2,\"col\":1,\"row\":5},{\"id\":\"fasit_ts_other\",\"type\":\"visualization\",\"panelIndex\":6,\"size_x\":3,\"size_y\":4,\"col\":10,\"row\":5},{\"id\":\"fasit_ts_robbery\",\"type\":\"visualization\",\"panelIndex\":7,\"size_x\":3,\"size_y\":2,\"col\":10,\"row\":3},{\"id\":\"fasit_ts_theft\",\"type\":\"visualization\",\"panelIndex\":8,\"size_x\":3,\"size_y\":2,\"col\":4,\"row\":7},{\"id\":\"fasit_ts_traffic\",\"type\":\"visualization\",\"panelIndex\":9,\"size_x\":3,\"size_y\":2,\"col\":1,\"row\":7},{\"id\":\"fasit_ts_vehicle_stolen\",\"type\":\"visualization\",\"panelIndex\":10,\"size_x\":3,\"size_y\":2,\"col\":10,\"row\":1},{\"id\":\"fasit_ts_wiki\",\"type\":\"visualization\",\"panelIndex\":11,\"size_x\":3,\"size_y\":4,\"col\":1,\"row\":1}]",
+      "optionsJSON": "{\"darkTheme\":false}",
+      "uiStateJSON": "{}",
       "version": 1,
       "timeRestore": false,
       "kibanaSavedObjectMeta": {
@@ -17,81 +34,137 @@
     }
   },
   {
-    "_id": "lapd_circles_map",
+    "_id": "fasit_map_scaled_circles",
     "_type": "visualization",
     "_source": {
-      "title": "lapd_circles_map",
-      "visState": "{\"title\":\"lapd_heatmap\",\"type\":\"tile_map\",\"params\":{\"addTooltip\":true,\"heatBlur\":15,\"heatMaxZoom\":\"17\",\"heatMinOpacity\":0.1,\"heatNormalizeData\":true,\"heatRadius\":\"15\",\"isDesaturated\":true,\"mapType\":\"Scaled Circle Markers\",\"wms\":{\"enabled\":false,\"options\":{\"attribution\":\"Maps provided by USGS\",\"format\":\"image/png\",\"layers\":\"0\",\"styles\":\"\",\"transparent\":true,\"version\":\"1.3.0\"},\"url\":\"https://basemap.nationalmap.gov/arcgis/services/USGSTopo/MapServer/WMSServer\"}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"geohash_grid\",\"schema\":\"segment\",\"params\":{\"field\":\"gps\",\"autoPrecision\":true,\"mapZoom\":12,\"mapCenter\":[34.04085388744741,-118.33065032958983],\"precision\":7}}],\"listeners\":{}}",
+      "title": "fasit_map_scaled_circles",
+      "visState": "{\"title\":\"New Visualization\",\"type\":\"tile_map\",\"params\":{\"mapType\":\"Scaled Circle Markers\",\"isDesaturated\":true,\"addTooltip\":true,\"heatMaxZoom\":16,\"heatMinOpacity\":\"0.17\",\"heatRadius\":25,\"heatBlur\":15,\"heatNormalizeData\":true,\"wms\":{\"enabled\":true,\"url\":\"http://ows-tile.terrestris.de/osm-basemap/service?\",\"options\":{\"version\":\"1.1.1\",\"layers\":\"OSM-WMS\",\"format\":\"image/jpeg\",\"transparent\":true,\"attribution\":\"Maps provided by OSM\",\"styles\":\"\"}}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"geohash_grid\",\"schema\":\"segment\",\"params\":{\"field\":\"gps\",\"autoPrecision\":true,\"mapZoom\":11,\"mapCenter\":[33.92683895146819,-118.30215454101562],\"precision\":6}}],\"listeners\":{}}",
       "uiStateJSON": "{}",
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"lapd\",\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}},\"filter\":[]}"
+        "searchSourceJSON": "{\"index\":\"lapd-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
       }
     }
   },
   {
-    "_id": "lapd_heatmap",
+    "_id": "fasit_crime_classification_donut",
     "_type": "visualization",
     "_source": {
-      "title": "lapd_heatmap",
-      "visState": "{\"aggs\":[{\"id\":\"1\",\"params\":{},\"schema\":\"metric\",\"type\":\"count\"},{\"id\":\"2\",\"params\":{\"autoPrecision\":true,\"field\":\"gps\",\"mapCenter\":[34.15769884105824,-118.42781066894531],\"mapZoom\":12,\"precision\":7},\"schema\":\"segment\",\"type\":\"geohash_grid\"}],\"listeners\":{},\"params\":{\"addTooltip\":true,\"heatBlur\":15,\"heatMaxZoom\":\"17\",\"heatMinOpacity\":0.1,\"heatNormalizeData\":true,\"heatRadius\":\"15\",\"isDesaturated\":true,\"mapType\":\"Heatmap\",\"wms\":{\"enabled\":false,\"options\":{\"attribution\":\"Maps provided by USGS\",\"format\":\"image/png\",\"layers\":\"0\",\"styles\":\"\",\"transparent\":true,\"version\":\"1.3.0\"},\"url\":\"https://basemap.nationalmap.gov/arcgis/services/USGSTopo/MapServer/WMSServer\"}},\"title\":\"New Visualization\",\"type\":\"tile_map\"}",
+      "title": "fasit_crime_classification_donut",
+      "visState": "{\"title\":\"New Visualization\",\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"isDonut\":true},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"filters\",\"schema\":\"segment\",\"params\":{\"filters\":[{\"input\":{\"query\":{\"query_string\":{\"query\":\"crime_description: HOMICIDE\",\"analyze_wildcard\":true}}},\"label\":\"HOMICIDE\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"crime_description: TRAFFIC\",\"analyze_wildcard\":true}}},\"label\":\"TRAFFIC\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"crime_description: BATTERY NOT ASSAULT\",\"analyze_wildcard\":true}}},\"label\":\"BATTERY\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"crime_description: THEFT\",\"analyze_wildcard\":true}}},\"label\":\"THEFT\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"crime_description: BURGLARY\",\"analyze_wildcard\":true}}},\"label\":\"BURGLARY\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"crime_description: ASSAULT\",\"analyze_wildcard\":true}}},\"label\":\"ASSAULT\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"crime_description: \\\"VEHICLE - STOLEN\\\"\",\"analyze_wildcard\":true}}},\"label\":\"VEHICLE - STOLEN\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"crime_description: ROBBERY\",\"analyze_wildcard\":true}}},\"label\":\"ROBBERY\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"NOT (crime_description: HOMICIDE TRAFFIC BATTERY THEFT BURGLARY ASSAULT \\\"VEHICLE - STOLEN\\\" ROBBERY)\",\"analyze_wildcard\":true}}},\"label\":\"OTHER\"}]}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"crime_description.raw\",\"size\":3,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
       "uiStateJSON": "{}",
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"lapd\",\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}},\"filter\":[]}"
+        "searchSourceJSON": "{\"index\":\"lapd-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
       }
     }
   },
   {
-    "_id": "lapd_bars_timestamp",
+    "_id": "fasit_crime_description_pie",
     "_type": "visualization",
     "_source": {
-      "title": "lapd_bars_timestamp",
-      "visState": "{\"aggs\":[{\"id\":\"1\",\"params\":{},\"schema\":\"metric\",\"type\":\"count\"},{\"id\":\"2\",\"params\":{\"customInterval\":\"2h\",\"extended_bounds\":{},\"field\":\"@timestamp\",\"interval\":\"auto\",\"min_doc_count\":1},\"schema\":\"segment\",\"type\":\"date_histogram\"}],\"listeners\":{},\"params\":{\"addLegend\":true,\"addTimeMarker\":false,\"addTooltip\":true,\"defaultYExtents\":false,\"mode\":\"stacked\",\"scale\":\"linear\",\"setYExtents\":false,\"shareYAxis\":true,\"times\":[],\"yAxis\":{}},\"title\":\"New Visualization\",\"type\":\"histogram\"}",
+      "title": "fasit_crime_description_pie",
+      "visState": "{\"title\":\"New Visualization\",\"type\":\"pie\",\"params\":{\"addLegend\":true,\"addTooltip\":true,\"isDonut\":false,\"shareYAxis\":true},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"crime_description.raw\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"spy\":{\"mode\":{\"fill\":false,\"name\":\"table\"}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"lapd-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "fasit_crime_code_pie",
+    "_type": "visualization",
+    "_source": {
+      "title": "fasit_crime_code_pie",
+      "visState": "{\"title\":\"fasit_crime_description_pie\",\"type\":\"pie\",\"params\":{\"addLegend\":true,\"addTooltip\":true,\"isDonut\":false,\"shareYAxis\":true},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"crime_code\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"spy\":{\"mode\":{\"fill\":false,\"name\":\"table\"}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"lapd-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "fasit_area_name_pie",
+    "_type": "visualization",
+    "_source": {
+      "title": "fasit_area_name_pie",
+      "visState": "{\"title\":\"fasit_crime_code_pie\",\"type\":\"pie\",\"params\":{\"addLegend\":true,\"addTooltip\":true,\"isDonut\":true,\"shareYAxis\":true},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"area_name.raw\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"spy\":{\"mode\":{\"fill\":false,\"name\":\"table\"}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"lapd-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "fasit_address_pie",
+    "_type": "visualization",
+    "_source": {
+      "title": "fasit_address_pie",
+      "visState": "{\"title\":\"fasit_area_name_pie\",\"type\":\"pie\",\"params\":{\"addLegend\":true,\"addTooltip\":true,\"isDonut\":true,\"shareYAxis\":true},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"address.raw\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"spy\":{\"mode\":{\"fill\":false,\"name\":\"table\"}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"lapd-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "fasit_area_code_pie",
+    "_type": "visualization",
+    "_source": {
+      "title": "fasit_area_code_pie",
+      "visState": "{\"title\":\"fasit_address_pie\",\"type\":\"pie\",\"params\":{\"addLegend\":true,\"addTooltip\":true,\"isDonut\":true,\"shareYAxis\":true},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"area_code\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"spy\":{\"mode\":{\"fill\":false,\"name\":\"table\"}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"lapd-*\",\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "fasit_case_count",
+    "_type": "visualization",
+    "_source": {
+      "title": "fasit_case_count",
+      "visState": "{\"title\":\"New Visualization\",\"type\":\"metric\",\"params\":{\"handleNoResults\":true,\"fontSize\":60},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"cases\"}}],\"listeners\":{}}",
       "uiStateJSON": "{}",
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"lapd\",\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}},\"filter\":[]}"
+        "searchSourceJSON": "{\"index\":\"lapd-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
       }
     }
   },
   {
-    "_id": "lapd_bottom5_t_crime_desc",
+    "_id": "fasit_crime_classification_line",
     "_type": "visualization",
     "_source": {
-      "title": "lapd_bottom5_t_crime_desc",
-      "visState": "{\"title\":\"lapd_top5_st_crime_desc\",\"type\":\"kibi_wordcloud\",\"params\":{\"perPage\":10,\"showMetricsAtAllLevels\":false,\"showPartialRows\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"crime_description.raw\",\"size\":5,\"order\":\"asc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
-      "uiStateJSON": "{}",
+      "title": "fasit_crime_classification_line",
+      "visState": "{\"title\":\"New Visualization\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"type\":\"filters\",\"schema\":\"group\",\"params\":{\"filters\":[{\"input\":{\"query\":{\"query_string\":{\"query\":\"crime_description: HOMICIDE\",\"analyze_wildcard\":true}}},\"label\":\"HOMICIDE\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"crime_description: TRAFFIC\",\"analyze_wildcard\":true}}},\"label\":\"TRAFFIC\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"crime_description: BATTERY NOT ASSAULT\",\"analyze_wildcard\":true}}},\"label\":\"BATTERY\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"crime_description: THEFT\",\"analyze_wildcard\":true}}},\"label\":\"THEFT\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"crime_description: BURGLARY\",\"analyze_wildcard\":true}}},\"label\":\"BURGLARY\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"crime_description: \\\"VEHICLE - STOLEN\\\"\",\"analyze_wildcard\":true}}},\"label\":\"VEHICLE - STOLEN\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"crime_description: ROBBERY\",\"analyze_wildcard\":true}}},\"label\":\"ROBBERY\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"NOT (crime_description: HOMICIDE TRAFFIC BATTERY THEFT BURGLARY ASSAULT \\\"VEHICLE - STOLEN\\\" ROBBERY)\",\"analyze_wildcard\":true}}},\"label\":\"OTHER\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"crime_description: ASSAULT\",\"analyze_wildcard\":true}}},\"label\":\"ASSAULT\"}]}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"colors\":{\"BURGLARY\":\"#BF1B00\",\"ASSAULT\":\"#EAB839\"}}}",
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"lapd\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+        "searchSourceJSON": "{\"index\":\"lapd-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
       }
     }
   },
   {
-    "_id": "lapd_top5_t_crime_desc",
+    "_id": "fasit_ts_crime_classification_percentage",
     "_type": "visualization",
     "_source": {
-      "title": "lapd_top5_t_crime_desc",
-      "visState": "{\"title\":\"lapd_bottom5_t_crime_desc\",\"type\":\"kibi_wordcloud\",\"params\":{\"perPage\":10,\"showMetricsAtAllLevels\":false,\"showPartialRows\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"crime_description.raw\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
-      "uiStateJSON": "{}",
-      "description": "",
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"lapd\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
-      }
-    }
-  },
-  {
-    "_id": "lapd_description",
-    "_type": "visualization",
-    "_source": {
-      "title": "lapd_description",
-      "visState": "{\"title\":\"lapd_description\",\"type\":\"markdown\",\"params\":{\"markdown\":\"#LAPD Crime Visualization\\n\\n## Crime description keywords\\n\\nUse these words to search in the dataset:\\n- BATTERY \\n- FIREARMS\\n- BURGLARY \\n- VEHICLE \\n- THEFT \\n- ABUSE\\n- KIDNAPPING\\n- CHILD \\n- KIDNAPPING \\n- ASSAULT\\n- SEX, RAPE,PIMPING, PEEPING TOM, INDECENT EXPOSURE\"},\"aggs\":[],\"listeners\":{}}",
+      "title": "fasit_ts_crime_classification_percentage",
+      "visState": "{\"title\":\"fasit_ts_crime_classification_percentage\",\"type\":\"timelion\",\"params\":{\"expression\":\"$q1='crime_description:HOMICIDE',$q2='crime_description:TRAFFIC',$q3='crime_description:BATTERY NOT ASSAULT',$q4='crime_description: THEFT',$q5='crime_description: BURGLARY',$q6='crime_description: ASSAULT',$q7='crime_description: \\\"VEHICLE - STOLEN\\\"',$q8='crime_description: ROBBERY',$q9='NOT (crime_description: HOMICIDE TRAFFIC BATTERY THEFT BURGLARY ASSAULT \\\"VEHICLE - STOLEN\\\" ROBBERY)',$timefield='@timestamp',$useKibanaFilter=true,.es(q=$q1,timefield=$timefield,kibana=$useKibanaFilter).divide(.es(q='*',timefield=$timefield,kibana=$useKibanaFilter)).yaxis(min=0,max=1).color(#57c17b),.es(q=$q2,timefield=$timefield,kibana=$useKibanaFilter).divide(.es(q='*',timefield=$timefield,kibana=$useKibanaFilter)).yaxis(min=0,max=1).color(#006e8a),.es(q=$q3,timefield=$timefield,kibana=$useKibanaFilter).divide(.es(q='*',timefield=$timefield,kibana=$useKibanaFilter)).yaxis(min=0,max=1).color(#6f87d8),.es(q=$q4,timefield=$timefield,kibana=$useKibanaFilter).divide(.es(q='*',timefield=$timefield,kibana=$useKibanaFilter)).yaxis(min=0,max=1).color(#663db8),.es(q=$q5,timefield=$timefield,kibana=$useKibanaFilter).divide(.es(q='*',timefield=$timefield,kibana=$useKibanaFilter)).yaxis(min=0,max=1).color(#bc52bc),.es(q=$q6,timefield=$timefield,kibana=$useKibanaFilter).divide(.es(q='*',timefield=$timefield,kibana=$useKibanaFilter)).yaxis(min=0,max=1).color(#9e3533),.es(q=$q7,timefield=$timefield,kibana=$useKibanaFilter).divide(.es(q='*',timefield=$timefield,kibana=$useKibanaFilter)).yaxis(min=0,max=1).color(#daa05d),.es(q=$q8,timefield=$timefield,kibana=$useKibanaFilter).divide(.es(q='*',timefield=$timefield,kibana=$useKibanaFilter)).yaxis(min=0,max=1).color(#57c17b),.es(q=$q9,timefield=$timefield,kibana=$useKibanaFilter).divide(.es(q='*',timefield=$timefield,kibana=$useKibanaFilter)).yaxis(min=0,max=1).color(#006e8a)\",\"interval\":\"1w\"},\"aggs\":[],\"listeners\":{}}",
       "uiStateJSON": "{}",
       "description": "",
       "version": 1,
@@ -101,156 +174,156 @@
     }
   },
   {
-    "_id": "lapd_pie_bottom5_crime_description",
+    "_id": "fasit_ts_battery_not_assault",
     "_type": "visualization",
     "_source": {
-      "title": "lapd_pie_bottom5_crime_description",
-      "visState": "{\"title\":\"lapd_pie_top5_crime_description\",\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"isDonut\":true},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"crime_description.raw\",\"size\":5,\"order\":\"asc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "title": "fasit_ts_battery_not_assault",
+      "visState": "{\"title\":\"fasit_ts_battery_not_assault\",\"type\":\"timelion\",\"params\":{\"expression\":\"$query='crime_description:BATTERY NOT ASSAULT',$timefield='@timestamp',$windowSize=4,$nsigma=3,$useKibanaFilter=true,.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).color(#6f87d8).lines(fill=1),.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).condition(gt,.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).movingaverage($windowSize,'left').if(eq,null,.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter)).sum(.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).mvstd($windowSize).if(eq,null,0).multiply($nsigma)),.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter),0).label(outliers).bars(3).color(#E6031C)\",\"interval\":\"1w\"},\"aggs\":[],\"listeners\":{}}",
       "uiStateJSON": "{}",
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"lapd\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+        "searchSourceJSON": "{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
       }
     }
   },
   {
-    "_id": "lapd_pie_top5_crime_description",
+    "_id": "fasit_ts_homicide",
     "_type": "visualization",
     "_source": {
-      "title": "lapd_pie_top5_crime_description",
-      "visState": "{\"title\":\"lapd_top5_crime_code\",\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"isDonut\":true},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"crime_description.raw\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "title": "fasit_ts_homicide",
+      "visState": "{\"title\":\"fasit_ts_battery_not_assault\",\"type\":\"timelion\",\"params\":{\"expression\":\"$query='crime_description:HOMICIDE',$timefield='@timestamp',$windowSize=4,$nsigma=3,$useKibanaFilter=true,.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).color(#57c17b).lines(fill=1),.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).condition(gt,.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).movingaverage($windowSize,'left').if(eq,null,.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter)).sum(.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).mvstd($windowSize).if(eq,null,0).multiply($nsigma)),.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter),0).label(outliers).bars(3).color(#E6031C)\",\"interval\":\"1w\"},\"aggs\":[],\"listeners\":{}}",
       "uiStateJSON": "{}",
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"lapd\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+        "searchSourceJSON": "{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
       }
     }
   },
   {
-    "_id": "lapd_top5_crime_code",
+    "_id": "fasit_ts_theft",
     "_type": "visualization",
     "_source": {
-      "title": "lapd_top5_crime_code",
-      "visState": "{\"title\":\"New Visualization\",\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"isDonut\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"crime_code\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "title": "fasit_ts_theft",
+      "visState": "{\"title\":\"fasit_ts_battery_not_assault\",\"type\":\"timelion\",\"params\":{\"expression\":\"$query='crime_description: THEFT',$timefield='@timestamp',$windowSize=4,$nsigma=3,$useKibanaFilter=true,.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).color(#663db8).lines(fill=1),.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).condition(gt,.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).movingaverage($windowSize,'left').if(eq,null,.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter)).sum(.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).mvstd($windowSize).if(eq,null,0).multiply($nsigma)),.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter),0).label(outliers).bars(3).color(#E6031C)\",\"interval\":\"1w\"},\"aggs\":[],\"listeners\":{}}",
       "uiStateJSON": "{}",
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"lapd\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+        "searchSourceJSON": "{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
       }
     }
   },
   {
-    "_id": "lapd_pie_top5_adress",
+    "_id": "fasit_ts_burglary",
     "_type": "visualization",
     "_source": {
-      "title": "lapd_pie_top5_adress",
-      "visState": "{\"title\":\"New Visualization\",\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"isDonut\":true},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"address.raw\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "title": "fasit_ts_burglary",
+      "visState": "{\"title\":\"fasit_ts_theft\",\"type\":\"timelion\",\"params\":{\"expression\":\"$query='crime_description: BURGLARY',$timefield='@timestamp',$windowSize=4,$nsigma=3,$useKibanaFilter=true,.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).color(#bc52bc).lines(fill=1),.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).condition(gt,.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).movingaverage($windowSize,'left').if(eq,null,.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter)).sum(.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).mvstd($windowSize).if(eq,null,0).multiply($nsigma)),.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter),0).label(outliers).bars(3).color(#E6031C)\",\"interval\":\"1w\"},\"aggs\":[],\"listeners\":{}}",
       "uiStateJSON": "{}",
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"lapd\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+        "searchSourceJSON": "{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
       }
     }
   },
   {
-    "_id": "lapd_pie_bottom5_adress",
+    "_id": "fasit_ts_traffic",
     "_type": "visualization",
     "_source": {
-      "title": "lapd_pie_bottom5_adress",
-      "visState": "{\"title\":\"lapd_pie_top5_adress\",\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"isDonut\":true},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"address.raw\",\"size\":5,\"order\":\"asc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "title": "fasit_ts_traffic",
+      "visState": "{\"title\":\"fasit_ts_homicide\",\"type\":\"timelion\",\"params\":{\"expression\":\"$query='crime_description:TRAFFIC',$timefield='@timestamp',$windowSize=4,$nsigma=3,$useKibanaFilter=true,.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).color(#006e8a).lines(fill=1),.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).condition(gt,.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).movingaverage($windowSize,'left').if(eq,null,.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter)).sum(.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).mvstd($windowSize).if(eq,null,0).multiply($nsigma)),.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter),0).label(outliers).bars(3).color(#E6031C)\",\"interval\":\"1w\"},\"aggs\":[],\"listeners\":{}}",
       "uiStateJSON": "{}",
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"lapd\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+        "searchSourceJSON": "{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
       }
     }
   },
   {
-    "_id": "lapd_top5_st_crime_desc",
+    "_id": "fasit_crime_description_significant_terms",
     "_type": "visualization",
     "_source": {
-      "title": "lapd_top5_st_crime_desc",
-      "visState": "{\"title\":\"lapd_top5_st_crime_desc\",\"type\":\"kibi_wordcloud\",\"params\":{\"perPage\":10,\"showMetricsAtAllLevels\":false,\"showPartialRows\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"significant_terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"crime_description.raw\",\"size\":5}}],\"listeners\":{}}",
+      "title": "fasit_crime_description_significant_terms",
+      "visState": "{\"title\":\"fasit_crime_classification_donut\",\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"isDonut\":true},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"significant_terms\",\"schema\":\"segment\",\"params\":{\"field\":\"crime_description.raw\",\"size\":10}}],\"listeners\":{}}",
       "uiStateJSON": "{}",
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"lapd\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+        "searchSourceJSON": "{\"index\":\"lapd-*\",\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}},\"filter\":[]}"
       }
     }
   },
   {
-    "_id": "lapd_area_crime_types",
+    "_id": "fasit_ts_assault",
     "_type": "visualization",
     "_source": {
-      "title": "lapd_area_crime_types",
-      "visState": "{\"title\":\"New Visualization\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"type\":\"filters\",\"schema\":\"group\",\"params\":{\"filters\":[{\"input\":{\"query\":{\"query_string\":{\"query\":\"BATTERY\",\"analyze_wildcard\":true}}},\"label\":\"\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"THEFT\",\"analyze_wildcard\":true}}}},{\"input\":{\"query\":{\"query_string\":{\"query\":\"BURGLARY\",\"analyze_wildcard\":true}}}},{\"input\":{\"query\":{\"query_string\":{\"query\":\"ASSAULT NOT BURGLARY\",\"analyze_wildcard\":true}}}},{\"input\":{\"query\":{\"query_string\":{\"query\":\"NOT (BATTERY OR THEFT OR BURGLARY OR ASSAULT)\",\"analyze_wildcard\":true}}},\"label\":\"Everything else\"}]}}],\"listeners\":{}}",
-      "uiStateJSON": "{\"vis\":{\"colors\":{\"Everything else\":\"#7EB26D\"}}}",
-      "description": "",
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"lapd\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
-      }
-    }
-  },
-  {
-    "_id": "lapd_lines_crime_types",
-    "_type": "visualization",
-    "_source": {
-      "title": "lapd_lines_crime_types",
-      "visState": "{\"title\":\"lapd_lines_crime_types\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"type\":\"filters\",\"schema\":\"group\",\"params\":{\"filters\":[{\"input\":{\"query\":{\"query_string\":{\"query\":\"BATTERY\",\"analyze_wildcard\":true}}},\"label\":\"\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"THEFT\",\"analyze_wildcard\":true}}}},{\"input\":{\"query\":{\"query_string\":{\"query\":\"BURGLARY\",\"analyze_wildcard\":true}}}},{\"input\":{\"query\":{\"query_string\":{\"query\":\"VANDALISM\",\"analyze_wildcard\":true}}}},{\"input\":{\"query\":{\"query_string\":{\"query\":\"ASSAULT NOT BATTERY\",\"analyze_wildcard\":true}}}},{\"input\":{\"query\":{\"query_string\":{\"query\":\"NOT (BATTERY OR THEFT OR BURGLARY OR VANDALISM OR ASSAULT)\",\"analyze_wildcard\":true}}},\"label\":\"Everything Else\"}]}}],\"listeners\":{}}",
+      "title": "fasit_ts_assault",
+      "visState": "{\"title\":\"fasit_ts_burglary\",\"type\":\"timelion\",\"params\":{\"expression\":\"$query='crime_description: ASSAULT',$timefield='@timestamp',$windowSize=4,$nsigma=3,$useKibanaFilter=true,.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).color(#9e3533).lines(fill=1),.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).condition(gt,.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).movingaverage($windowSize,'left').if(eq,null,.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter)).sum(.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).mvstd($windowSize).if(eq,null,0).multiply($nsigma)),.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter),0).label(outliers).bars(3).color(#E6031C)\",\"interval\":\"1w\"},\"aggs\":[],\"listeners\":{}}",
       "uiStateJSON": "{}",
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"lapd\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+        "searchSourceJSON": "{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
       }
     }
   },
   {
-    "_id": "lapd_table_top5_st_crime_description",
+    "_id": "fasit_ts_other",
     "_type": "visualization",
     "_source": {
-      "title": "lapd_table_top5_st_crime_description",
-      "visState": "{\"title\":\"New Visualization\",\"type\":\"table\",\"params\":{\"perPage\":5,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"significant_terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"crime_description.raw\",\"size\":5}}],\"listeners\":{}}",
+      "title": "fasit_ts_other",
+      "visState": "{\"title\":\"fasit_ts_vehicle_stolen\",\"type\":\"timelion\",\"params\":{\"expression\":\"$query='NOT (crime_description: HOMICIDE TRAFFIC BATTERY THEFT BURGLARY ASSAULT \\\"VEHICLE - STOLEN\\\" ROBBERY)',$timefield='@timestamp',$windowSize=4,$nsigma=3,$useKibanaFilter=true,.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).color(#006e8a).lines(fill=1),.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).condition(gt,.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).movingaverage($windowSize,'left').if(eq,null,.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter)).sum(.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).mvstd($windowSize).if(eq,null,0).multiply($nsigma)),.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter),0).label(outliers).bars(3).color(#E6031C)\",\"interval\":\"1w\"},\"aggs\":[],\"listeners\":{}}",
       "uiStateJSON": "{}",
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"lapd\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+        "searchSourceJSON": "{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
       }
     }
   },
   {
-    "_id": "lapd_table_top5_t_crime_description",
+    "_id": "fasit_ts_robbery",
     "_type": "visualization",
     "_source": {
-      "title": "lapd_table_top5_t_crime_description",
-      "visState": "{\"title\":\"lapd_table_top5_st_crime_description\",\"type\":\"table\",\"params\":{\"perPage\":5,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"crime_description.raw\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "title": "fasit_ts_robbery",
+      "visState": "{\"title\":\"fasit_ts_other\",\"type\":\"timelion\",\"params\":{\"expression\":\"$query='crime_description: ROBBERY',$timefield='@timestamp',$windowSize=4,$nsigma=3,$useKibanaFilter=true,.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).color(#57c17b).lines(fill=1),.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).condition(gt,.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).movingaverage($windowSize,'left').if(eq,null,.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter)).sum(.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).mvstd($windowSize).if(eq,null,0).multiply($nsigma)),.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter),0).label(outliers).bars(3).color(#E6031C)\",\"interval\":\"1w\"},\"aggs\":[],\"listeners\":{}}",
       "uiStateJSON": "{}",
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"lapd\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+        "searchSourceJSON": "{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
       }
     }
   },
   {
-    "_id": "lapd_count",
+    "_id": "fasit_ts_vehicle_stolen",
     "_type": "visualization",
     "_source": {
-      "title": "lapd_count",
-      "visState": "{\"title\":\"lapd_count\",\"type\":\"metric\",\"params\":{\"fontSize\":\"37\"},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"cardinality\",\"schema\":\"metric\",\"params\":{\"field\":\"address.raw\"}}],\"listeners\":{}}",
+      "title": "fasit_ts_vehicle_stolen",
+      "visState": "{\"title\":\"fasit_ts_robbery\",\"type\":\"timelion\",\"params\":{\"expression\":\"$query='crime_description: \\\"VEHICLE - STOLEN\\\"',$timefield='@timestamp',$windowSize=4,$nsigma=3,$useKibanaFilter=true,.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).color(#daa05d).lines(fill=1),.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).condition(gt,.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).movingaverage($windowSize,'left').if(eq,null,.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter)).sum(.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter).mvstd($windowSize).if(eq,null,0).multiply($nsigma)),.es(q=$query,timefield=$timefield,kibana=$useKibanaFilter),0).label(outliers).bars(3).color(#E6031C)\",\"interval\":\"1w\"},\"aggs\":[],\"listeners\":{}}",
       "uiStateJSON": "{}",
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"lapd\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+        "searchSourceJSON": "{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "fasit_ts_wiki",
+    "_type": "visualization",
+    "_source": {
+      "title": "fasit_ts_wiki",
+      "visState": "{\"title\":\"New Visualization\",\"type\":\"markdown\",\"params\":{\"markdown\":\"# Outliers Analysis\\nThis dashboards shows unexpected changes in the data for certain queries.\\n\\n## What kind of unexpected?\\nOutlier events when data increases 3 times more than the standard deviation of the average of the data:\\n- Take a filter query (a search result)\\n- Calculate the moving average for last 4 weeks\\n- Add 3 times the moving standard deviation\\n- If the value exceeds the value of the query, we show it as a bar\"},\"aggs\":[],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
       }
     }
   }
