@@ -41,8 +41,8 @@ fi
 }
 
 
-esVersion="elasticsearch-2.3.5"
-elasticsearchURL="https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.3.5/elasticsearch-2.3.5.tar.gz"
+esVersion="elasticsearch-2.4.0"
+elasticsearchURL="https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.4.0/elasticsearch-2.4.0.tar.gz"
 esFilename=$esVersion.tar.gz
 
 download $elasticsearchURL $esFilename
@@ -51,12 +51,12 @@ decompress $esFilename $esVersion
 echo-green "Installing elasticsearch plugins"
 # ES Plugins
 ./$esVersion/bin/plugin install lmenezes/elasticsearch-kopf/master
-./$esVersion/bin/plugin install https://github.com/sscarduzio/elasticsearch-readonlyrest-plugin/blob/master/download/elasticsearch-readonlyrest-v1.9.4_es-v2.3.5.zip?raw=true
+#./$esVersion/bin/plugin install https://github.com/sscarduzio/elasticsearch-readonlyrest-plugin/blob/master/download/elasticsearch-readonlyrest-v1.9.4_es-v2.4.0.zip?raw=true
 # https://github.com/sirensolutions/siren-join
 # ./$esVersion/bin/plugin install solutions.siren/siren-join/2.2.0
 
-lsVersion="logstash-2.3.4"
-logstashURL="https://download.elastic.co/logstash/logstash/logstash-2.3.4.tar.gz"
+lsVersion="logstash-2.4.0"
+logstashURL="https://download.elastic.co/logstash/logstash/logstash-2.4.0.tar.gz"
 logstashFile=$lsVersion.tar.gz
 
 download $logstashURL $logstashFile
@@ -75,12 +75,12 @@ osversion () {
 if osversion 
 then
    echo "64-bits OS detected"
-   kVersion="kibana-4.5.4-linux-x64"
-   kibanaURL="https://download.elastic.co/kibana/kibana/kibana-4.5.4-linux-x64.tar.gz"
+   kVersion="kibana-4.6.0-linux-x64"
+   kibanaURL="https://download.elastic.co/kibana/kibana/kibana-4.6.0-linux-x64.tar.gz"
 else
    echo "32-bits OS detected"
-   kVersion="kibana-4.5.4-linux-x86"
-   kibanaURL="https://download.elastic.co/kibana/kibana/kibana-4.5.4-linux-x86.tar.gz"
+   kVersion="kibana-4.6.0-linux-x86"
+   kibanaURL="https://download.elastic.co/kibana/kibana/kibana-4.6.0-linux-x86.tar.gz"
 fi
 
 echo "Using URL for kibana $kibanaURL"
