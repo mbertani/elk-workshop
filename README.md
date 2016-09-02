@@ -11,8 +11,6 @@ This repo contains all the resources needed for the workshop.
 Before you come to the workshop, you can do the following to save time:
 - [Follow the instructions provided here](https://github.com/Sardtok/elk-workshop-vm/)
 - Run `vagrant ssh` to connect to the VM
-- Go into the workshop git repo: `cd elk-workshop`
-- Update the repo: `git pull`
-- Run the setup script: `./setup.sh`
-- Go to the data folder: `cd logstash/pipelines/lapd/data/`
+- Go to the data folder: `cd elk-workshop/logstash/pipelines/lapd/data/`
 - Decompress the data: `tar xvfz data.tar.gz`
+- Update the repo the day of the workshop by taking a `git pull` at `~/elk-workshop$`
