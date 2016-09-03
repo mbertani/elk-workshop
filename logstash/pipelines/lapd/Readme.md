@@ -21,3 +21,6 @@ Start at 3.md for instructions
 
 ## 4 Send the data to elasticsearch
 Start at 4.md for instructions
+
+## 5 Explore and visualize the data in Kibana
+Start at 5.md for instructions
