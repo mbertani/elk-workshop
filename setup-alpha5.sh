@@ -55,7 +55,7 @@ echo-green "Installing elasticsearch plugins"
 
 lsVersion="logstash-5.0.0-alpha5"
 logstashURL="https://download.elastic.co/logstash/logstash/logstash-5.0.0-alpha5.tar.gz"
-#"https://download.elastic.co/logstash/logstash/logstash-2.3.4.tar.gz"
+#"https://download.elastic.co/logstash/logstash/logstash-2.4.0.tar.gz"
 logstashFile=$lsVersion.tar.gz
 
 download $logstashURL $logstashFile
