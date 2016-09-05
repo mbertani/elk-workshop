@@ -4,15 +4,9 @@
 <meta charset="utf-8"/>
 <title>Law and Order in LA <br> To Process and Search with ELK</title>
 <meta name="author" content="(Marco Bertani-Økland  (export-snippet (:back-end html :value <br> :begin 22 :end 36 :post-blank 1 :parent #0)) Sigmund Hansen)"/>
-<style type="text/css">
-.underline { text-decoration: underline; }
-</style>
 <link rel="stylesheet" href="./reveal.js/css/reveal.css"/>
-
 <link rel="stylesheet" href="./reveal.js/css/theme/night.css" id="theme"/>
-
 <link rel="stylesheet" href="custom.css"/>
-
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
     if( window.location.search.match( /print-pdf/gi ) ) {
@@ -27,7 +21,11 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Law and Order in LA <br> To Process and Search with ELK</h1><h2 class="author">Marco Bertani-Økland <br> Sigmund Hansen</h2><p class="date">Created: 2016-08-28 søn. 17:38</p>
+<section id="sec-title-slide">
+<h1>Law and Order in LA <br> To Process and Search with ELK</h1>
+<h2>Marco Bertani-Økland <br> Sigmund Hansen</h2>
+<h2><a href="mailto:mab@computas.com sha@computas.com">mab@computas.com sha@computas.com</a></h2>
+<h2></h2>
 </section>
 
 <section>
@@ -140,14 +138,14 @@ The philosophy behind these tools is that getting immediate, actionable insight 
 <section id="slide-orgheadline5">
 <h3 id="orgheadline5">Shell</h3>
 <ul>
-<li>Run &lt;elk-workshop&gt;/elasticsearch-2.3.5/bin/elasticsearch(.bat)
+<li>Run &lt;elk-workshop&gt;/elasticsearch-2.4.0/bin/elasticsearch
 <ul>
-<li>Open your browser at <a href="http://127.0.0.1:9200">http://127.0.0.1:9200</a></li>
+<li>Open your browser at <a href="http://127.0.0.1:9200/">http://127.0.0.1:9200/</a></li>
 
 </ul></li>
-<li>Run &lt;elk-workshop&gt;/kibana-4.5.4/bin/kibana(.bat)
+<li>Run &lt;elk-workshop&gt;/kibana-4.6.0/bin/kibana
 <ul>
-<li>Open your browser at <a href="http://127.0.0.1:5601">http://127.0.0.1:5601</a></li>
+<li>Open your browser at <a href="http://127.0.0.1:5601/">http://127.0.0.1:5601/</a></li>
 
 </ul></li>
 <li>Start a shell in &lt;elk-workshop&gt;/logstash/pipelines/setup
@@ -172,16 +170,7 @@ Linux:
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-bash">../../../logstash-2.3.4/bin/logstash agent -f verify.conf --configtest
-</pre>
-</div>
-
-<p>
-Windows:
-</p>
-<div class="org-src-container">
-
-<pre  class="src src-bash">..<span style="color: #2d9574;">\.</span>.<span style="color: #2d9574;">\.</span>.\logstash-2.3.4\bin\logstash agent -f verify.conf --configtest
+<pre  class="src src-bash">../../../logstash-2.4.0/bin/logstash -f verify.conf --configtest
 </pre>
 </div>
 
@@ -277,7 +266,7 @@ Windows:
 
 <tr>
 <td class="org-left"><b>How:</b></td>
-<td class="org-left">Open 1.md and roll up your sleeves</td>
+<td class="org-left">Open <a href="https://github.com/mbertani/elk-workshop/blob/javazone2016/logstash/pipelines/lapd/1.md">1.md</a> and roll up your sleeves</td>
 </tr>
 
 <tr>
@@ -310,7 +299,7 @@ Windows:
 
 <tr>
 <td class="org-left"><b>How:</b></td>
-<td class="org-left">Open 2.md and read.</td>
+<td class="org-left">Open <a href="https://github.com/mbertani/elk-workshop/blob/javazone2016/logstash/pipelines/lapd/2.md">2.md</a> and read.</td>
 </tr>
 
 <tr>
@@ -347,7 +336,7 @@ Windows:
 
 <tr>
 <td class="org-left"><b>How:</b></td>
-<td class="org-left">Open 3.md</td>
+<td class="org-left">Open <a href="https://github.com/mbertani/elk-workshop/blob/javazone2016/logstash/pipelines/lapd/3.md">3.md</a></td>
 </tr>
 
 <tr>
@@ -388,7 +377,7 @@ Windows:
 
 <tr>
 <td class="org-left"><b>How:</b></td>
-<td class="org-left">Open 4.md</td>
+<td class="org-left">Open <a href="https://github.com/mbertani/elk-workshop/blob/javazone2016/logstash/pipelines/lapd/4.md">4.md</a></td>
 </tr>
 
 <tr>
@@ -409,8 +398,8 @@ Windows:
 </section>
 </section>
 <section>
-<section id="slide-orgheadline16">
-<h2 id="orgheadline16">LAPD data visualization in Kibana</h2>
+<section id="slide-orgheadline15">
+<h2 id="orgheadline15">LAPD data visualization in Kibana</h2>
 <ul>
 <li class="fragment appear">Settings tab
 <ul>
@@ -421,9 +410,17 @@ Windows:
 <ul>
 <li>Play with the time filter</li>
 <li>See the structure of the data</li>
+<li>How to use the search bar: <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html">query dsl</a></li>
 
 </ul></li>
-<li class="fragment appear">Visualize tab
+
+</ul>
+
+</section>
+<section id="slide-orgheadline14">
+<h3 id="orgheadline14">LAPD data visualization in Kibana</h3>
+<ul>
+<li><a href="https://www.elastic.co/guide/en/kibana/current/visualize.html">Visualize</a> tab: 
 <ul>
 <li>Generate Pie charts</li>
 <li>Histogram bars</li>
@@ -433,34 +430,20 @@ Windows:
 <li>Markdown</li>
 
 </ul></li>
-<li class="fragment appear">Dashboard tab
+<li><p>
+Dashboard tab
+</p>
 <ul>
 <li>Construct a dashboard</li>
 <li>How to import / export the dashboard</li>
 
-</ul></li>
-
 </ul>
-
-</section>
-<section id="slide-orgheadline14">
-<h3 id="orgheadline14">Kibana plugins</h3>
-<ul>
-<li>Sense <a href="https://www.elastic.co/guide/en/sense/current/sense-ui.html">https://www.elastic.co/guide/en/sense/current/sense-ui.html</a></li>
-<li>Timelion <a href="https://www.elastic.co/blog/timelion-timeline">https://www.elastic.co/blog/timelion-timeline</a>  
-<ul>
-<li>Do as in <a href="https://github.com/mbertani/elk-workshop/tree/javazone2016/kibana/timelion">https://github.com/mbertani/elk-workshop/tree/javazone2016/kibana/timelion</a> to install a missing function for outlier detection</li>
-
-</ul></li>
-
-</ul>
-
-</section>
-<section id="slide-orgheadline15">
-<h3 id="orgheadline15">Timeseries analysis with Timelion</h3>
 <p>
-Check the query constructor at <a href="https://github.com/mbertani/elk-workshop/tree/javazone2016/kibana/timelion/timelion_analysis.ps1">https://github.com/mbertani/elk-workshop/tree/javazone2016/kibana/timelion/timelion_analysis.ps1</a> 
-</p>
+Open <a href="https://github.com/mbertani/elk-workshop/blob/javazone2016/logstash/pipelines/lapd/5.md">5.md</a> and get to work.
+</p></li>
+
+</ul>
+
 
 </section>
 </section>
@@ -469,8 +452,8 @@ Check the query constructor at <a href="https://github.com/mbertani/elk-workshop
 <h2 id="orgheadline21">Wrap-up</h2>
 <div class="outline-text-2" id="text-orgheadline21">
 </div></section>
-<section id="slide-orgheadline17">
-<h3 id="orgheadline17">Useful links</h3>
+<section id="slide-orgheadline16">
+<h3 id="orgheadline16">Useful links</h3>
 <ul>
 <li>Follow the blog <a href="https://www.elastic.co/blog">https://www.elastic.co/blog</a></li>
 <li>Some books
@@ -479,6 +462,23 @@ Check the query constructor at <a href="https://github.com/mbertani/elk-workshop
 <li><a href="https://www.packtpub.com/big-data-and-business-intelligence/learning-elk-stack">https://www.packtpub.com/big-data-and-business-intelligence/learning-elk-stack</a></li>
 
 </ul></li>
+<li>A bit about scaling:
+<ul>
+<li><a href="https://www.elastic.co/blog/performance-considerations-elasticsearch-indexing">https://www.elastic.co/blog/performance-considerations-elasticsearch-indexing</a></li>
+<li><a href="https://www.elastic.co/content-pack?id=1458671587417159">https://www.elastic.co/content-pack?id=1458671587417159</a></li>
+
+</ul></li>
+<li>Resilience: <a href="https://www.elastic.co/guide/en/elasticsearch/resiliency/current/index.html">https://www.elastic.co/guide/en/elasticsearch/resiliency/current/index.html</a></li>
+
+</ul>
+
+</section>
+<section id="slide-orgheadline17">
+<h3 id="orgheadline17">More links</h3>
+<ul>
+<li>Heap size: <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/heap-sizing.html">https://www.elastic.co/guide/en/elasticsearch/guide/current/heap-sizing.html</a></li>
+<li>Alerting (Open Source): <a href="https://elastalert.readthedocs.io/en/latest/elastalert.html">https://elastalert.readthedocs.io/en/latest/elastalert.html</a></li>
+<li>Access Control: <a href="https://github.com/sscarduzio/elasticsearch-readonlyrest-plugin">https://github.com/sscarduzio/elasticsearch-readonlyrest-plugin</a></li>
 
 </ul>
 
@@ -491,6 +491,7 @@ Check the query constructor at <a href="https://github.com/mbertani/elk-workshop
 <li><a href="http://stackoverflow.com/questions/18823917/how-to-implement-the-unit-or-integration-tests-for-logstash-configuration">http://stackoverflow.com/questions/18823917/how-to-implement-the-unit-or-integration-tests-for-logstash-configuration</a></li>
 
 </ul>
+
 </section>
 <section id="slide-orgheadline19">
 <h3 id="orgheadline19">Time-based Indices</h3>
@@ -563,20 +564,11 @@ Logs, exercises and configuration files can be found in <b>logstash/pipelines/ht
 </ul>
 
 <p>
-Windows:
-</p>
-<div class="org-src-container">
-
-<pre  class="src src-bash">..<span style="color: #2d9574;">\.</span>.<span style="color: #2d9574;">\.</span>.\logstash-2.3.4\bin\logstash agent -f <span style="color: #a45bad;">1.conf</span>
-</pre>
-</div>
-
-<p>
 Linux:
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-bash">../../../logstash-2.3.4/bin/logstash agent -f <span style="color: #a45bad;">1.conf</span>
+<pre  class="src src-bash">../../../logstash-2.4.0/bin/logstash -f 1.conf
 </pre>
 </div>
 
@@ -738,7 +730,7 @@ controls: true,
 progress: true,
 history: false,
 center: true,
-slideNumber: 'c',
+slideNumber: true,
 rollingLinks: false,
 keyboard: true,
 overview: true,
