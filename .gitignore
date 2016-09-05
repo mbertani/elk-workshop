@@ -2,6 +2,7 @@
 logstash-*
 elasticsearch-*
 kibana-*
+filebeat-*
 
 # Ignore Emacs temporary files
 *~

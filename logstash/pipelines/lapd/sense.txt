@@ -1,0 +1,81 @@
+GET lapd/_mapping
+
+DELETE lapd
+
+DELETE _template/lapd_template
+
+PUT _template/lapd_template
+{
+  "template": "lapd-*",
+  "settings": {
+    "index": {
+      "number_of_shards": "5",
+      "number_of_replicas": "0"
+    }
+  },
+  "mappings": {
+    "logs": {
+      "properties": {
+        "@timestamp": {
+          "type": "date",
+          "format": "strict_date_optional_time||epoch_millis"
+        },
+        "@version": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string",
+          "fields": {
+            "raw": {
+              "type": "string",
+              "index": "not_analyzed"
+            }
+          }
+        },
+        "area_code": {
+          "type": "string",
+          "index": "not_analyzed"
+        },
+        "area_name": {
+          "type": "string",
+          "fields": {
+            "raw": {
+              "type": "string",
+              "index": "not_analyzed"
+            }
+          }
+        },
+        "crime_code": {
+          "type": "string",
+          "index": "not_analyzed"
+        },
+        "crime_description": {
+          "type": "string",
+          "fields": {
+            "raw": {
+              "type": "string",
+              "index": "not_analyzed"
+            }
+          }
+        },
+        "gps": {
+          "type": "geo_point",
+          "lat_lon": true,
+          "geohash": true,
+          "index": "not_analyzed"
+        },
+        "host": {
+          "type": "string",
+          "index": "not_analyzed"
+        },
+        "message": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string",
+          "index": "not_analyzed"
+        }
+      }
+    }
+  }
+}

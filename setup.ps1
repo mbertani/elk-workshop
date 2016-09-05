@@ -26,34 +26,52 @@ foreach($item in $zip.items())
 	}
 }
 
+
+$esVersion = "elasticsearch-2.2.0"
 $elasticsearchURL = "https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/zip/elasticsearch/2.2.0/elasticsearch-2.2.0.zip"
-$elasticsearchFile = "$pwd\elasticsearch-2.2.0.zip"
+$elasticsearchFile = "$PSScriptRoot\$esVersion.zip"
 download -url $elasticsearchURL -file $elasticsearchFile
 
-$logstashURL = "https://download.elastic.co/logstash/logstash/logstash-2.2.2.zip"
-$logstashFile = "$pwd\logstash-2.2.2.zip"
+$lsVersion = "logstash-2.1.1"
+$logstashURL = "https://download.elastic.co/logstash/logstash/logstash-2.1.1.zip"
+$logstashFile = "$PSScriptRoot\$lsVersion.zip"
 download -url $logstashURL -file $logstashFile
 
+$kVersion = "kibana-4.4.1-windows"
 $kibanaURL ="https://download.elastic.co/kibana/kibana/kibana-4.4.1-windows.zip"
-$kibanaFile = "$pwd\kibana-4.4.1-windows.zip"
+$kibanaFile = "$PSScriptRoot\$kVersion.zip"
 download -url $kibanaURL -file $kibanaFile
 
-Expand-ZIPFile –File $elasticsearchFile –Destination "$pwd"
-Expand-ZIPFile –File $logstashFile –Destination "$pwd"
-Expand-ZIPFile –File $kibanaFile –Destination "$pwd"
+$fbVersion = "filebeat-1.1.1-windows"
+$fileBeatURL ="https://download.elastic.co/beats/filebeat/filebeat-1.1.1-windows.zip"
+$fileBeatFile = "$PSScriptRoot\$fbVersion.zip"
+download -url $fileBeatURL -file $fileBeatFile
+
+Expand-ZIPFile –File $elasticsearchFile –Destination "$PSScriptRoot"
+Expand-ZIPFile –File $logstashFile –Destination "$PSScriptRoot"
+Expand-ZIPFile –File $kibanaFile –Destination "$PSScriptRoot"
+# Expand-ZIPFile –File $fileBeatFile –Destination "$PSScriptRoot"
+
 
 push-Location
-cd "elasticsearch-2.2.0\bin"
+cd "$esVersion\bin"
 .\plugin install lmenezes/elasticsearch-kopf/master
 pop-Location
 
 push-Location
-cd "logstash-2.2.2\bin"
+cd "$lsVersion\bin"
 .\plugin install logstash-input-jdbc
 .\plugin install logstash-input-beats
 pop-Location
 
 push-Location
-cd "kibana-4.4.1-windows\bin"
+cd "$kVersion\bin"
 .\kibana plugin -i kibana/timelion
+.\kibana plugin -i elastic/sense
+# https://github.com/sirensolutions/kibi_radar_vis
+.\kibana plugin -i kibi_radar_vis -u  https://github.com/sirensolutions/kibi_radar_vis/archive/0.1.0.zip
+# https://github.com/sirensolutions/kibi_wordcloud_vis
+.\kibana plugin -i kibi_wordcloud_vis -u https://github.com/sirensolutions/kibi_wordcloud_vis/raw/0.1.0/target/kibi_wordcloud_vis-0.1.0.zip
+# https://github.com/sirensolutions/kibi_timeline_vis
+.\kibana plugin -i kibi_timeline_vis -u https://github.com/sirensolutions/kibi_timeline_vis/raw/0.1.1/target/kibi_timeline_vis-0.1.1.zip
 pop-Location

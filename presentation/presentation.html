@@ -2,11 +2,17 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<title>Hands-on ELK Workshop</title>
-<meta name="author" content="(Marco Bertani-Økland and Sigmund Hansen)"/>
+<title>Law and Order in LA <br> To Process and Search with ELK</title>
+<meta name="author" content="(Marco Bertani-Økland  (export-snippet (:back-end html :value <br> :begin 22 :end 36 :post-blank 1 :parent #0)) Sigmund Hansen)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
 <link rel="stylesheet" href="./reveal.js/css/reveal.css"/>
+
 <link rel="stylesheet" href="./reveal.js/css/theme/night.css" id="theme"/>
-<link rel="stylesheet" href=""/>
+
+<link rel="stylesheet" href="custom.css"/>
+
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
     if( window.location.search.match( /print-pdf/gi ) ) {
@@ -21,11 +27,7 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide">
-<h1>Hands-on ELK Workshop</h1>
-<h2>Marco Bertani-Økland and Sigmund Hansen</h2>
-<h2><a href="mailto:mab@computas.com sha@computas.com">mab@computas.com sha@computas.com</a></h2>
-<h2></h2>
+<section id="sec-title-slide"><h1 class="title">Law and Order in LA <br> To Process and Search with ELK</h1><h2 class="author">Marco Bertani-Økland <br> Sigmund Hansen</h2><p class="date">Created: 2016-09-05 man. 23:36</p>
 </section>
 
 <section>
@@ -41,48 +43,33 @@
 </colgroup>
 <tbody>
 <tr>
-<td class="org-left"><b>17:00-17:30</b></td>
-<td class="org-left">Intro + food (we speak, you eat )</td>
+<td class="org-left"><b>09:00-09:15</b></td>
+<td class="org-left">Intro + setup</td>
 </tr>
 
 <tr>
-<td class="org-left"><b>17:30-18:00</b></td>
-<td class="org-left">Configuration (Install ELK + repo)</td>
+<td class="org-left"><b>09:15-10:30</b></td>
+<td class="org-left">Logstash</td>
 </tr>
 
 <tr>
-<td class="org-left"><b>18:00-18:40</b></td>
-<td class="org-left">1st pipeline logstash + Elasticsearch</td>
+<td class="org-left"><b>10:30-10:45</b></td>
+<td class="org-left">Pause + questions</td>
 </tr>
 
 <tr>
-<td class="org-left"><b>18:40-18:50</b></td>
-<td class="org-left">pause</td>
+<td class="org-left"><b>10:45-11:15</b></td>
+<td class="org-left">Logstash continues</td>
 </tr>
 
 <tr>
-<td class="org-left"><b>18:50-19:20</b></td>
-<td class="org-left">1st pipeline visualization in Kibana</td>
+<td class="org-left"><b>11:15-11:30</b></td>
+<td class="org-left">Pause + question</td>
 </tr>
 
 <tr>
-<td class="org-left"><b>19:20-19:30</b></td>
-<td class="org-left">Pause</td>
-</tr>
-
-<tr>
-<td class="org-left"><b>19:30-20:10</b></td>
-<td class="org-left">2nd pipeline logstash + Elasticsearch</td>
-</tr>
-
-<tr>
-<td class="org-left"><b>20:10-20:20</b></td>
-<td class="org-left">Pause</td>
-</tr>
-
-<tr>
-<td class="org-left"><b>20:20-21:00</b></td>
-<td class="org-left">2nd pipeline visualization in Kibana</td>
+<td class="org-left"><b>11:30-13:00</b></td>
+<td class="org-left">Kibana</td>
 </tr>
 </tbody>
 </table>
@@ -135,16 +122,15 @@ The philosophy behind these tools is that getting immediate, actionable insight 
 <h2 id="orgheadline7">Setup</h2>
 <ul>
 <li>Clone <a href="https://github.com/mbertani/elk-workshop">https://github.com/mbertani/elk-workshop</a></li>
-<li>Extract at the root of the repository:
-<ul>
-<li>Elasticsearch</li>
-<li>Logstash</li>
-<li>Kibana</li>
-
-</ul></li>
-<li>Edit elasticsearch-2.1.1/config/elasticsearch.yml
+<li>Follow instructions at <a href="https://github.com/mbertani/elk-workshop/tree/javazone2016">https://github.com/mbertani/elk-workshop/tree/javazone2016</a></li>
+<li>Edit elasticsearch-2.3.5/config/elasticsearch.yml
 <ul>
 <li>cluster.name: ${HOSTNAME}</li>
+
+</ul></li>
+<li>Set Enviroment variable ES_HEAP_SIZE=1g
+<ul>
+<li>For more information: <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/heap-sizing.html">https://www.elastic.co/guide/en/elasticsearch/guide/current/heap-sizing.html</a></li>
 
 </ul></li>
 
@@ -154,16 +140,14 @@ The philosophy behind these tools is that getting immediate, actionable insight 
 <section id="slide-orgheadline5">
 <h3 id="orgheadline5">Shell</h3>
 <ul>
-<li>Start a shell in &lt;elk-workshop&gt;/elasticsearch-2.1.1/bin
+<li>Run &lt;elk-workshop&gt;/elasticsearch-2.3.5/bin/elasticsearch(.bat)
 <ul>
-<li>Run elasticsearch</li>
-<li>Open your browser at <a href="http://127.0.0.1:9200/">http://127.0.0.1:9200/</a></li>
+<li>Open your browser at <a href="http://127.0.0.1:9200">http://127.0.0.1:9200</a></li>
 
 </ul></li>
-<li>Start a shell in &lt;elk-workshop&gt;/kibana-4.3.1-xxx/bin
+<li>Run &lt;elk-workshop&gt;/kibana-4.5.4/bin/kibana(.bat)
 <ul>
-<li>Run kibana</li>
-<li>Open your browser at <a href="http://127.0.0.1:5601/">http://127.0.0.1:5601/</a></li>
+<li>Open your browser at <a href="http://127.0.0.1:5601">http://127.0.0.1:5601</a></li>
 
 </ul></li>
 <li>Start a shell in &lt;elk-workshop&gt;/logstash/pipelines/setup
@@ -179,7 +163,7 @@ The philosophy behind these tools is that getting immediate, actionable insight 
 <section id="slide-orgheadline6">
 <h3 id="orgheadline6">Verify Logstash</h3>
 <ul>
-<li>Follow instructions at setup.txt</li>
+<li>Follow instructions at <a href="https://github.com/mbertani/elk-workshop/blob/javazone2016/logstash/pipelines/setup/Setup.md">https://github.com/mbertani/elk-workshop/blob/javazone2016/logstash/pipelines/setup/Setup.md</a></li>
 
 </ul>
 
@@ -188,7 +172,7 @@ Linux:
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-bash">../../../logstash-2.1.1/bin/logstash agent -f verify.conf --configtest
+<pre  class="src src-bash">../../../logstash-2.3.4/bin/logstash agent -f verify.conf --configtest
 </pre>
 </div>
 
@@ -197,7 +181,7 @@ Windows:
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-bash">..\..\..\logstash-2.1.1\bin\logstash agent -f verify.conf --configtest
+<pre  class="src src-bash">..<span style="color: #2d9574;">\.</span>.<span style="color: #2d9574;">\.</span>.\logstash-2.3.4\bin\logstash agent -f verify.conf --configtest
 </pre>
 </div>
 
@@ -207,16 +191,16 @@ Windows:
 <section id="slide-orgheadline8">
 <h2 id="orgheadline8">Pipelines</h2>
 <ul>
-<li>LAPD Crime Reports with Marco</li>
-<li>HTTP Access Logs with Sigmund</li>
+<li>LAPD Crime Reports</li>
+<li>HTTP Access Logs (Homework)</li>
 
 </ul>
 
 </section>
 </section>
 <section>
-<section id="slide-orgheadline14">
-<h2 id="orgheadline14">LAPD Crime Reports</h2>
+<section id="slide-orgheadline13">
+<h2 id="orgheadline13">LAPD Crime Reports</h2>
 <ul>
 <li>Navigate to <b>./logstash/pipelines/lapd</b></li>
 <li>Familiarize yourself with the data <b>./logstash/pipelines/lapd/data/lapd_small.csv</b></li>
@@ -293,7 +277,7 @@ Windows:
 
 <tr>
 <td class="org-left"><b>How:</b></td>
-<td class="org-left">Open 1.txt and roll up your sleeves</td>
+<td class="org-left">Open 1.md and roll up your sleeves</td>
 </tr>
 
 <tr>
@@ -326,7 +310,7 @@ Windows:
 
 <tr>
 <td class="org-left"><b>How:</b></td>
-<td class="org-left">Open 2.txt and read.</td>
+<td class="org-left">Open 2.md and read.</td>
 </tr>
 
 <tr>
@@ -363,7 +347,7 @@ Windows:
 
 <tr>
 <td class="org-left"><b>How:</b></td>
-<td class="org-left">Open 3.txt</td>
+<td class="org-left">Open 3.md</td>
 </tr>
 
 <tr>
@@ -404,7 +388,7 @@ Windows:
 
 <tr>
 <td class="org-left"><b>How:</b></td>
-<td class="org-left">Open 4.txt</td>
+<td class="org-left">Open 4.md</td>
 </tr>
 
 <tr>
@@ -423,8 +407,10 @@ Windows:
 </p>
 
 </section>
-<section id="slide-orgheadline13">
-<h3 id="orgheadline13">Kibana visualization</h3>
+</section>
+<section>
+<section id="slide-orgheadline16">
+<h2 id="orgheadline16">LAPD data visualization in Kibana</h2>
 <ul>
 <li class="fragment appear">Settings tab
 <ul>
@@ -444,6 +430,7 @@ Windows:
 <li>Line charts for trends</li>
 <li>Metrics</li>
 <li>Filter aggregations</li>
+<li>Markdown</li>
 
 </ul></li>
 <li class="fragment appear">Dashboard tab
@@ -455,24 +442,122 @@ Windows:
 
 </ul>
 
+</section>
+<section id="slide-orgheadline14">
+<h3 id="orgheadline14">Kibana plugins</h3>
+<ul>
+<li>Sense <a href="https://www.elastic.co/guide/en/sense/current/sense-ui.html">https://www.elastic.co/guide/en/sense/current/sense-ui.html</a></li>
+<li>Timelion <a href="https://www.elastic.co/blog/timelion-timeline">https://www.elastic.co/blog/timelion-timeline</a>  
+<ul>
+<li>Do as in <a href="https://github.com/mbertani/elk-workshop/tree/javazone2016/kibana/timelion">https://github.com/mbertani/elk-workshop/tree/javazone2016/kibana/timelion</a> to install a missing function for outlier detection</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-orgheadline15">
+<h3 id="orgheadline15">Timeseries analysis with Timelion</h3>
+<p>
+Check the query constructor at <a href="https://github.com/mbertani/elk-workshop/tree/javazone2016/kibana/timelion/timelion_analysis.ps1">https://github.com/mbertani/elk-workshop/tree/javazone2016/kibana/timelion/timelion_analysis.ps1</a> 
+</p>
 
 </section>
 </section>
 <section>
-<section id="slide-orgheadline28">
-<h2 id="orgheadline28">HTTP Access Logs</h2>
+<section id="slide-orgheadline21">
+<h2 id="orgheadline21">Wrap-up</h2>
+<div class="outline-text-2" id="text-orgheadline21">
+</div></section>
+<section id="slide-orgheadline17">
+<h3 id="orgheadline17">Useful links</h3>
+<ul>
+<li>Follow the blog <a href="https://www.elastic.co/blog">https://www.elastic.co/blog</a></li>
+<li>Some books
+<ul>
+<li><a href="https://www.packtpub.com/big-data-and-business-intelligence/elasticsearch-cookbook">https://www.packtpub.com/big-data-and-business-intelligence/elasticsearch-cookbook</a></li>
+<li><a href="https://www.packtpub.com/big-data-and-business-intelligence/learning-elk-stack">https://www.packtpub.com/big-data-and-business-intelligence/learning-elk-stack</a></li>
+
+</ul></li>
+<li>A bit about scaling:
+<ul>
+<li><a href="https://www.elastic.co/blog/performance-considerations-elasticsearch-indexing">https://www.elastic.co/blog/performance-considerations-elasticsearch-indexing</a></li>
+<li><a href="https://www.elastic.co/content-pack?id=1458671587417159">https://www.elastic.co/content-pack?id=1458671587417159</a></li>
+
+</ul></li>
+<li>Resilience: <a href="https://www.elastic.co/guide/en/elasticsearch/resiliency/current/index.html">https://www.elastic.co/guide/en/elasticsearch/resiliency/current/index.html</a></li>
+
+</ul>
+
+</section>
+<section id="slide-orgheadline18">
+<h3 id="orgheadline18">Unit/Integration Tests</h3>
+<ul>
+<li>Testing Logstash configurations can be difficult</li>
+<li>It is possible to write unit tests in Ruby:</li>
+<li><a href="http://stackoverflow.com/questions/18823917/how-to-implement-the-unit-or-integration-tests-for-logstash-configuration">http://stackoverflow.com/questions/18823917/how-to-implement-the-unit-or-integration-tests-for-logstash-configuration</a></li>
+
+</ul>
+</section>
+<section id="slide-orgheadline19">
+<h3 id="orgheadline19">Time-based Indices</h3>
+<ul>
+<li>You can add date fields to the index name
+<ul>
+<li>Slight increase in storage requirements</li>
+<li>Allows deleting partial data, which saves storage</li>
+<li>Increased performance?</li>
+
+</ul></li>
+<li>You may want indices to be:
+<ul>
+<li>Daily: "-%{+YYYY.MM.dd}"</li>
+<li>Weekly "-%{+xxxx.ww}"</li>
+<li>Monthly "-%{+YYYY.MM}"</li>
+
+</ul></li>
+<li>Defaults to daily: "logstash-%{+YYYY.MM.dd}"</li>
+
+</ul>
+
+</section>
+<section id="slide-orgheadline20">
+<h3 id="orgheadline20">Feedback</h3>
+<p>
+We would love to hear from you. Could you fill the following form? It should not take more than 3 minutes.
+</p>
+
+<p>
+<a href="http://goo.gl/forms/TGKfF7u28Q">http://goo.gl/forms/TGKfF7u28Q</a>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline35">
+<h2 id="orgheadline35">HTTP Access Logs (Homework)</h2>
 <p>
 Access logs generated by a script based on: <br  />
 <a href="https://gist.github.com/fetep/2037301">https://gist.github.com/fetep/2037301</a>
 </p>
 
 <p>
-Logs, exercises and configuration files can be found in <b>logstash/pipelines/httpd</b>
+Logs, exercises and configuration files can be found in <b>logstash/pipelines/httpd</b> on the <b>booster2016</b> branch.
 </p>
 
+<p>
+Run the following from the root of the repository:
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-bash">git checkout booster2016 -- logstash/pipelines/httpd
+</pre>
+</div>
+
 </section>
-<section id="slide-orgheadline20">
-<h3 id="orgheadline20">Grok</h3>
+<section id="slide-orgheadline27">
+<h3 id="orgheadline27">Grok</h3>
 <ul>
 <li>Regular expression text parser</li>
 <li>Pre-defined patterns
@@ -485,8 +570,8 @@ Logs, exercises and configuration files can be found in <b>logstash/pipelines/ht
 </ul>
 
 </section>
-<section id="slide-orgheadline16">
-<h4 id="orgheadline16">Getting started</h4>
+<section id="slide-orgheadline23">
+<h4 id="orgheadline23">Getting started</h4>
 <ul>
 <li>Have a look at <b>data/access.mini.log</b></li>
 <li>Adapt the paths in <b>1.conf</b></li>
@@ -499,7 +584,7 @@ Windows:
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-bash">..\..\..\logstash-2.1.1\bin\logstash agent -f 1.conf
+<pre  class="src src-bash">..<span style="color: #2d9574;">\.</span>.<span style="color: #2d9574;">\.</span>.\logstash-2.3.4\bin\logstash agent -f <span style="color: #a45bad;">1.conf</span>
 </pre>
 </div>
 
@@ -508,13 +593,13 @@ Linux:
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-bash">../../../logstash-2.1.1/bin/logstash agent -f 1.conf
+<pre  class="src src-bash">../../../logstash-2.3.4/bin/logstash agent -f <span style="color: #a45bad;">1.conf</span>
 </pre>
 </div>
 
 </section>
-<section id="slide-orgheadline15">
-<h5 id="orgheadline15">Match Option</h5>
+<section id="slide-orgheadline22">
+<h5 id="orgheadline22">Match Option</h5>
 <ul>
 <li>Take note of the pattern used: "%{DATA:test} "</li>
 <li><b>DATA</b> is a pre-defined pattern equivalent to ".*?"</li>
@@ -524,8 +609,8 @@ Linux:
 </ul>
 
 </section>
-<section id="slide-orgheadline19">
-<h4 id="orgheadline19">Grok constructor</h4>
+<section id="slide-orgheadline26">
+<h4 id="orgheadline26">Grok constructor</h4>
 <ul>
 <li>Regular expressions can be a hassle</li>
 <li>Lots of pre-defined patterns (around 120): <br  />
@@ -536,8 +621,8 @@ to the rescue</li>
 </ul>
 
 </section>
-<section id="slide-orgheadline17">
-<h5 id="orgheadline17">Incremental Construction</h5>
+<section id="slide-orgheadline24">
+<h5 id="orgheadline24">Incremental Construction</h5>
 <ul>
 <li>Select incremental construction</li>
 <li>Copy a few lines from access.mini.log into the text area and press Go</li>
@@ -552,8 +637,8 @@ For now, spend a few minutes getting familiar with the constructor.</li>
 </ul>
 
 </section>
-<section id="slide-orgheadline18">
-<h5 id="orgheadline18">Incremental Construction cont.</h5>
+<section id="slide-orgheadline25">
+<h5 id="orgheadline25">Incremental Construction cont.</h5>
 <ul>
 <li>The Apache log format documentation: <br  />
 <a href="https://httpd.apache.org/docs/1.3/logs.html#common">https://httpd.apache.org/docs/1.3/logs.html#common</a></li>
@@ -573,8 +658,8 @@ For now, spend a few minutes getting familiar with the constructor.</li>
 </ul>
 
 </section>
-<section id="slide-orgheadline23">
-<h3 id="orgheadline23">Geo IP</h3>
+<section id="slide-orgheadline30">
+<h3 id="orgheadline30">Geo IP</h3>
 <ul>
 <li>Adds GPS coordinates based on IP addresses.</li>
 <li>A database mapping IP addresses to cities is included in logstash.</li>
@@ -584,8 +669,8 @@ For now, spend a few minutes getting familiar with the constructor.</li>
 </ul>
 
 </section>
-<section id="slide-orgheadline21">
-<h4 id="orgheadline21">Basic Geo IP Configuration</h4>
+<section id="slide-orgheadline28">
+<h4 id="orgheadline28">Basic Geo IP Configuration</h4>
 <ul>
 <li>Use <b>2.conf</b>, or add a geoip filter after your grok filter</li>
 <li>First set the source field to the client IP/host name field</li>
@@ -596,8 +681,8 @@ or by running the configuration before adding the geoip filter</li>
 </ul>
 
 </section>
-<section id="slide-orgheadline22">
-<h4 id="orgheadline22">Fields</h4>
+<section id="slide-orgheadline29">
+<h4 id="orgheadline29">Fields</h4>
 <ul>
 <li>The geoip has added a lot of fields</li>
 <li>The most important one is <b>[geoip][location]</b> (coordinates)</li>
@@ -608,8 +693,8 @@ or by running the configuration before adding the geoip filter</li>
 </ul>
 
 </section>
-<section id="slide-orgheadline24">
-<h3 id="orgheadline24">Timestamp</h3>
+<section id="slide-orgheadline31">
+<h3 id="orgheadline31">Timestamp</h3>
 <ul>
 <li>Use <b>3.conf</b>, for this and the next exercise</li>
 <li>Format specification can be found at: <br  />
@@ -621,8 +706,8 @@ because the Apache date format contains it</li>
 </ul>
 
 </section>
-<section id="slide-orgheadline25">
-<h3 id="orgheadline25">Checksum</h3>
+<section id="slide-orgheadline32">
+<h3 id="orgheadline32">Checksum</h3>
 <ul>
 <li>Add a checksum with the checksum filter: <br  />
 <a href="https://www.elastic.co/guide/en/logstash/current/plugins-filters-checksum.html">https://www.elastic.co/guide/en/logstash/current/plugins-filters-checksum.html</a></li>
@@ -638,8 +723,8 @@ because the Apache date format contains it</li>
 </ul>
 
 </section>
-<section id="slide-orgheadline27">
-<h3 id="orgheadline27">Output to Elasticsearch</h3>
+<section id="slide-orgheadline34">
+<h3 id="orgheadline34">Output to Elasticsearch</h3>
 <ul>
 <li>Add output to Elasticsearch</li>
 <li>Set the name of the index</li>
@@ -647,62 +732,11 @@ because the Apache date format contains it</li>
 </ul>
 
 </section>
-<section id="slide-orgheadline26">
-<h4 id="orgheadline26">Import Full Access Log</h4>
+<section id="slide-orgheadline33">
+<h4 id="orgheadline33">Import Full Access Log</h4>
 <ul>
 <li>Unzip the <b>data/access.zip</b> archive</li>
 <li>Run logstash with the final configuration</li>
-
-</ul>
-
-</section>
-</section>
-<section>
-<section id="slide-orgheadline32">
-<h2 id="orgheadline32">Wrap-up</h2>
-<div class="outline-text-2" id="text-orgheadline32">
-</div></section>
-<section id="slide-orgheadline29">
-<h3 id="orgheadline29">Useful links</h3>
-<ul>
-<li>Follow the blog <a href="https://www.elastic.co/blog">https://www.elastic.co/blog</a></li>
-<li>Some books
-<ul>
-<li><a href="https://www.packtpub.com/big-data-and-business-intelligence/elasticsearch-cookbook">https://www.packtpub.com/big-data-and-business-intelligence/elasticsearch-cookbook</a></li>
-<li><a href="https://www.packtpub.com/big-data-and-business-intelligence/learning-elk-stack">https://www.packtpub.com/big-data-and-business-intelligence/learning-elk-stack</a></li>
-
-</ul></li>
-
-</ul>
-
-</section>
-<section id="slide-orgheadline30">
-<h3 id="orgheadline30">Unit/Integration Tests</h3>
-<ul>
-<li>Testing Logstash configurations can be difficult</li>
-<li>It is possible to write unit tests in Ruby:</li>
-<li><a href="http://stackoverflow.com/questions/18823917/how-to-implement-the-unit-or-integration-tests-for-logstash-configuration">http://stackoverflow.com/questions/18823917/how-to-implement-the-unit-or-integration-tests-for-logstash-configuration</a></li>
-
-</ul>
-</section>
-<section id="slide-orgheadline31">
-<h3 id="orgheadline31">Time-based Indices</h3>
-<ul>
-<li>You can add date fields to the index name
-<ul>
-<li>Slight increase in storage requirements</li>
-<li>Allows deleting partial data, which saves storage</li>
-<li>Increased performance?</li>
-
-</ul></li>
-<li>You may want indices to be:
-<ul>
-<li>Daily: "-%{+YYYY.MM.dd}"</li>
-<li>Weekly "-%{+xxxx.ww}"</li>
-<li>Monthly "-%{+YYYY.MM}"</li>
-
-</ul></li>
-<li>Defaults to daily: "logstash-%{+YYYY.MM.dd}"</li>
 
 </ul>
 </section>
@@ -721,7 +755,7 @@ controls: true,
 progress: true,
 history: false,
 center: true,
-slideNumber: true,
+slideNumber: 'c',
 rollingLinks: false,
 keyboard: true,
 overview: true,
