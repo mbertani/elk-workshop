@@ -45,7 +45,7 @@ The philosophy behind these tools is that getting immediate, actionable insight 
 * Setup
 - Clone https://github.com/mbertani/elk-workshop
 - Follow instructions at https://github.com/mbertani/elk-workshop/tree/javazone2016
-- Edit elasticsearch-2.3.5/config/elasticsearch.yml
+- Edit elasticsearch-2.4.0/config/elasticsearch.yml
   - cluster.name: ${HOSTNAME}
 - Set Enviroment variable ES_HEAP_SIZE=1g
   - For more information: https://www.elastic.co/guide/en/elasticsearch/guide/current/heap-sizing.html

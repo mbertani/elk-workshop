@@ -27,8 +27,8 @@ foreach($item in $zip.items())
 }
 
 
-$esVersion = "elasticsearch-2.2.0"
-$elasticsearchURL = "https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/zip/elasticsearch/2.2.0/elasticsearch-2.2.0.zip"
+$esVersion = "elasticsearch-2.4.0"
+$elasticsearchURL = "https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/zip/elasticsearch/2.4.0/elasticsearch-2.4.0.zip"
 $elasticsearchFile = "$PSScriptRoot\$esVersion.zip"
 download -url $elasticsearchURL -file $elasticsearchFile
 
@@ -37,8 +37,8 @@ $logstashURL = "https://download.elastic.co/logstash/logstash/logstash-2.4.0.zip
 $logstashFile = "$PSScriptRoot\$lsVersion.zip"
 download -url $logstashURL -file $logstashFile
 
-$kVersion = "kibana-4.4.1-windows"
-$kibanaURL ="https://download.elastic.co/kibana/kibana/kibana-4.4.1-windows.zip"
+$kVersion = "kibana-4.6.0-windows"
+$kibanaURL ="https://download.elastic.co/kibana/kibana/kibana-4.6.0-windows.zip"
 $kibanaFile = "$PSScriptRoot\$kVersion.zip"
 download -url $kibanaURL -file $kibanaFile
 
