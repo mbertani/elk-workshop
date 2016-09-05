@@ -1,4 +1,4 @@
-logstashVersion="logstash-2.3.4"
+logstashVersion="logstash-2.4.0"
 logstashBinPath="../../../$logstashVersion/bin"
 
 function echo-green() {
