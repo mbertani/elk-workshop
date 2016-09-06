@@ -15,11 +15,11 @@ In the following, we make sure logstash works correctly in your system.
 
 1. Runs logstash and verifies the input file
 
-```$ ../../../logstash-2.3.4/bin/logstash agent -f verify.conf --configtest```
+```$ ../../../logstash-2.4.0/bin/logstash agent -f verify.conf --configtest```
 
 2. Runs the command again without the test check 
 
-```$ ../../../logstash-2.3.4/bin/logstash agent -f verify.conf```
+```$ ../../../logstash-2.4.0/bin/logstash agent -f verify.conf```
 
 
 ## Further info

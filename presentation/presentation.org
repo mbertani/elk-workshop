@@ -45,16 +45,16 @@ The philosophy behind these tools is that getting immediate, actionable insight 
 * Setup
 - Clone https://github.com/mbertani/elk-workshop
 - Follow instructions at https://github.com/mbertani/elk-workshop/tree/javazone2016
-- Edit elasticsearch-2.3.5/config/elasticsearch.yml
+- Edit elasticsearch-2.4.0/config/elasticsearch.yml
   - cluster.name: ${HOSTNAME}
 - Set Enviroment variable ES_HEAP_SIZE=1g
   - For more information: https://www.elastic.co/guide/en/elasticsearch/guide/current/heap-sizing.html
 
 ** Shell
 
-- Run <elk-workshop>/elasticsearch-2.3.5/bin/elasticsearch(.bat)
+- Run <elk-workshop>/elasticsearch-2.4.0/bin/elasticsearch
   - Open your browser at http://127.0.0.1:9200
-- Run <elk-workshop>/kibana-4.5.4/bin/kibana(.bat)
+- Run <elk-workshop>/kibana-4.6.0/bin/kibana
   - Open your browser at http://127.0.0.1:5601
 - Start a shell in <elk-workshop>/logstash/pipelines/setup
   - This will be used for logstash 
@@ -66,12 +66,7 @@ The philosophy behind these tools is that getting immediate, actionable insight 
 
 Linux:
 #+BEGIN_SRC bash
-../../../logstash-2.3.4/bin/logstash agent -f verify.conf --configtest
-#+END_SRC
-
-Windows:
-#+BEGIN_SRC bash
-..\..\..\logstash-2.3.4\bin\logstash agent -f verify.conf --configtest
+../../../logstash-2.4.0/bin/logstash -f verify.conf --configtest
 #+END_SRC
 
 * Pipelines
@@ -98,7 +93,7 @@ Windows:
 ** 1st step: Read the data
 
 | *What:* | Learn how to use the file input plugin |
-| *How:*  | Open 1.md and roll up your sleeves  |
+| *How:*  | Open [[https://github.com/mbertani/elk-workshop/blob/javazone2016/logstash/pipelines/lapd/1.md][1.md]] and roll up your sleeves  |
 | *When:* | Now. You have 3 minutes! |
 
 *Ærg help!* https://www.elastic.co/guide/en/logstash/current/plugins-inputs-file.html
@@ -106,7 +101,7 @@ Windows:
 ** 2nd step: Give structure to the data
 
 | *What:* | Familiarize yourself with the csv filter plugin |
-| *How:*  | Open 2.md and read. |
+| *How:*  | Open [[https://github.com/mbertani/elk-workshop/blob/javazone2016/logstash/pipelines/lapd/2.md][2.md]] and read. |
 | *When:* | Now. You have 5 minutes! |
 
 *Ærg help!* 
@@ -116,7 +111,7 @@ https://www.elastic.co/guide/en/logstash/current/plugins-filters-csv.html
 ** 3rd step: Clean and format the data
 
 | *What:*  | Familiarize yourself with mutate and date filter plugins |
-| *How:* | Open 3.md  |
+| *How:* | Open [[https://github.com/mbertani/elk-workshop/blob/javazone2016/logstash/pipelines/lapd/3.md][3.md]]  |
 | *When:* | Now. You have 5 minutes! |
 
 *Ærg help!*  
@@ -127,7 +122,7 @@ https://www.elastic.co/guide/en/logstash/current/plugins-filters-date.html
 
 ** 4th step: Export data to elasticsearch
 | *What:*  | Familiarize yourself with elasticsearch output plugin    |
-| *How:* | Open 4.md  |
+| *How:* | Open [[https://github.com/mbertani/elk-workshop/blob/javazone2016/logstash/pipelines/lapd/4.md][4.md]]  |
 | *When:* | Now. You have 5 minutes! |
 
 *Ærg help!*  
@@ -142,7 +137,13 @@ https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.h
 - Discover tab
   - Play with the time filter
   - See the structure of the data
-- Visualize tab
+  - How to use the search bar: [[https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html][query dsl]] 
+
+** LAPD data visualization in Kibana
+
+#+ATTR_REVEAL: :frag (appear)
+  
+- [[https://www.elastic.co/guide/en/kibana/current/visualize.html][Visualize]] tab: 
   - Generate Pie charts
   - Histogram bars
   - Line charts for trends
@@ -153,15 +154,8 @@ https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.h
   - Construct a dashboard
   - How to import / export the dashboard
 
-** Kibana plugins
+ Open [[https://github.com/mbertani/elk-workshop/blob/javazone2016/logstash/pipelines/lapd/5.md][5.md]] and get to work.
  
- - Sense https://www.elastic.co/guide/en/sense/current/sense-ui.html
- - Timelion https://www.elastic.co/blog/timelion-timeline  
-	- Do as in https://github.com/mbertani/elk-workshop/tree/javazone2016/kibana/timelion to install a missing function for outlier detection
- 
-** Timeseries analysis with Timelion
-
-Check the query constructor at https://github.com/mbertani/elk-workshop/tree/javazone2016/kibana/timelion/timelion_analysis.ps1 
   
 * Wrap-up
 
@@ -176,11 +170,18 @@ Check the query constructor at https://github.com/mbertani/elk-workshop/tree/jav
   - https://www.elastic.co/content-pack?id=1458671587417159
 - Resilience: https://www.elastic.co/guide/en/elasticsearch/resiliency/current/index.html
 
+** More links
+
+- Heap size: https://www.elastic.co/guide/en/elasticsearch/guide/current/heap-sizing.html 
+- Alerting (Open Source): https://elastalert.readthedocs.io/en/latest/elastalert.html
+- Access Control: https://github.com/sscarduzio/elasticsearch-readonlyrest-plugin
+
 ** Unit/Integration Tests
 
 - Testing Logstash configurations can be difficult
 - It is possible to write unit tests in Ruby:
 - http://stackoverflow.com/questions/18823917/how-to-implement-the-unit-or-integration-tests-for-logstash-configuration
+
 ** Time-based Indices
 
 - You can add date fields to the index name
@@ -204,7 +205,13 @@ http://goo.gl/forms/TGKfF7u28Q
 Access logs generated by a script based on: \\
 https://gist.github.com/fetep/2037301
 
-Logs, exercises and configuration files can be found in *logstash/pipelines/httpd*
+Logs, exercises and configuration files can be found in *logstash/pipelines/httpd* on the *booster2016* branch.
+
+Run the following from the root of the repository:
+
+#+BEGIN_SRC bash
+git checkout booster2016 -- logstash/pipelines/httpd
+#+END_SRC
 
 ** Grok
 
@@ -219,14 +226,9 @@ Logs, exercises and configuration files can be found in *logstash/pipelines/http
 - Adapt the paths in *1.conf*
 - Run logstash and take note of the *test* field:
 
-Windows:
-#+BEGIN_SRC bash
-..\..\..\logstash-2.3.4\bin\logstash agent -f 1.conf
-#+END_SRC
-
 Linux:
 #+BEGIN_SRC bash
-../../../logstash-2.3.4/bin/logstash agent -f 1.conf
+../../../logstash-2.4.0/bin/logstash -f 1.conf
 #+END_SRC
 
 **** Match Option
