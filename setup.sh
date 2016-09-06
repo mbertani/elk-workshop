@@ -75,8 +75,8 @@ osversion () {
 if osversion 
 then
    echo "64-bits OS detected"
-   kVersion="kibana-4.6.0-linux-x64"
-   kibanaURL="https://download.elastic.co/kibana/kibana/kibana-4.6.0-linux-x64.tar.gz"
+   kVersion="kibana-4.6.0-linux-x86_64"
+   kibanaURL="https://download.elastic.co/kibana/kibana/kibana-4.6.0-linux-x86_64.tar.gz"
 else
    echo "32-bits OS detected"
    kVersion="kibana-4.6.0-linux-x86"

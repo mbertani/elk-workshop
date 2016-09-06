@@ -37,8 +37,8 @@ $logstashURL = "https://download.elastic.co/logstash/logstash/logstash-2.4.0.zip
 $logstashFile = "$PSScriptRoot\$lsVersion.zip"
 download -url $logstashURL -file $logstashFile
 
-$kVersion = "kibana-4.6.0-windows"
-$kibanaURL ="https://download.elastic.co/kibana/kibana/kibana-4.6.0-windows.zip"
+$kVersion = "kibana-4.6.0-windows-x86"
+$kibanaURL ="https://download.elastic.co/kibana/kibana/kibana-4.6.0-windows-x86.zip"
 $kibanaFile = "$PSScriptRoot\$kVersion.zip"
 download -url $kibanaURL -file $kibanaFile
 
